@@ -1,0 +1,1298 @@
+{
+  "dqn_seed0": {
+    "env_seed": 10000300,
+    "n_steps": 20,
+    "reproducible": true,
+    "diverges_on_other_seed": true,
+    "first_actions": [
+      24,
+      4,
+      24,
+      4,
+      24
+    ],
+    "trace": [
+      {
+        "step": 0,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 221,
+        "success": true,
+        "reward": 1.0641917137,
+        "skill_gain": 0.0083062341,
+        "mastery_after": 0.2436062341
+      },
+      {
+        "step": 1,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 122,
+        "success": true,
+        "reward": 0.7139335678,
+        "skill_gain": 0.0098487273,
+        "mastery_after": 0.2631487273
+      },
+      {
+        "step": 2,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 225,
+        "success": false,
+        "reward": -0.9398248889,
+        "skill_gain": 0.0020540028,
+        "mastery_after": 0.2456602369
+      },
+      {
+        "step": 3,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 121,
+        "success": false,
+        "reward": -0.972060163,
+        "skill_gain": 0.0028584782,
+        "mastery_after": 0.2660072055
+      },
+      {
+        "step": 4,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 222,
+        "success": true,
+        "reward": 0.527423329,
+        "skill_gain": 0.0077093649,
+        "mastery_after": 0.2533696017
+      },
+      {
+        "step": 5,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 223,
+        "success": false,
+        "reward": -0.6263134628,
+        "skill_gain": 0.0020274902,
+        "mastery_after": 0.2553970919
+      },
+      {
+        "step": 6,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 125,
+        "success": false,
+        "reward": -1.0337589955,
+        "skill_gain": 0.0028473893,
+        "mastery_after": 0.2688545948
+      },
+      {
+        "step": 7,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 224,
+        "success": true,
+        "reward": 0.5759507359,
+        "skill_gain": 0.0073346158,
+        "mastery_after": 0.2627317077
+      },
+      {
+        "step": 8,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 123,
+        "success": false,
+        "reward": -0.8599435835,
+        "skill_gain": 0.0028363433,
+        "mastery_after": 0.2716909381
+      },
+      {
+        "step": 9,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 223,
+        "success": false,
+        "reward": -0.2307124706,
+        "skill_gain": 0.0020020672,
+        "mastery_after": 0.2647337748
+      },
+      {
+        "step": 10,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 124,
+        "success": true,
+        "reward": 0.6349751696,
+        "skill_gain": 0.0069055305,
+        "mastery_after": 0.2785964686
+      },
+      {
+        "step": 11,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 225,
+        "success": false,
+        "reward": -0.6224415471,
+        "skill_gain": 0.0019966305,
+        "mastery_after": 0.2667304053
+      },
+      {
+        "step": 12,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 121,
+        "success": true,
+        "reward": 0.28662623,
+        "skill_gain": 0.0068531803,
+        "mastery_after": 0.2854496489
+      },
+      {
+        "step": 13,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 222,
+        "success": true,
+        "reward": 1.0272840814,
+        "skill_gain": 0.0071650262,
+        "mastery_after": 0.2738954316
+      },
+      {
+        "step": 14,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 222,
+        "success": true,
+        "reward": -0.0342966174,
+        "skill_gain": 0.0072921895,
+        "mastery_after": 0.2811876211
+      },
+      {
+        "step": 15,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 125,
+        "success": false,
+        "reward": -0.6591356657,
+        "skill_gain": 0.0027719659,
+        "mastery_after": 0.2882216148
+      },
+      {
+        "step": 16,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 225,
+        "success": false,
+        "reward": -0.7070339583,
+        "skill_gain": 0.0019519498,
+        "mastery_after": 0.2831395708
+      },
+      {
+        "step": 17,
+        "action": 27,
+        "label": "Easy Greedy",
+        "problem_id": 236,
+        "success": true,
+        "reward": 1.0571217674,
+        "skill_gain": 0.0074665028,
+        "mastery_after": 0.2360665028
+      },
+      {
+        "step": 18,
+        "action": 27,
+        "label": "Easy Greedy",
+        "problem_id": 239,
+        "success": true,
+        "reward": 0.5015631969,
+        "skill_gain": 0.007601681,
+        "mastery_after": 0.2436681838
+      },
+      {
+        "step": 19,
+        "action": 27,
+        "label": "Easy Greedy",
+        "problem_id": 237,
+        "success": true,
+        "reward": 0.45089997,
+        "skill_gain": 0.0077314223,
+        "mastery_after": 0.2513996061
+      }
+    ],
+    "errors": []
+  },
+  "dqn_seed1": {
+    "env_seed": 10000300,
+    "n_steps": 20,
+    "reproducible": true,
+    "diverges_on_other_seed": true,
+    "first_actions": [
+      13,
+      30,
+      13,
+      30,
+      13
+    ],
+    "trace": [
+      {
+        "step": 0,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 166,
+        "success": true,
+        "reward": 1.0532035588,
+        "skill_gain": 0.0117108761,
+        "mastery_after": 0.2570108761
+      },
+      {
+        "step": 1,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 252,
+        "success": true,
+        "reward": 1.0437987236,
+        "skill_gain": 0.007424233,
+        "mastery_after": 0.323924233
+      },
+      {
+        "step": 2,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 170,
+        "success": true,
+        "reward": 0.7472559267,
+        "skill_gain": 0.0115291554,
+        "mastery_after": 0.2685400315
+      },
+      {
+        "step": 3,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 253,
+        "success": true,
+        "reward": 0.9208269388,
+        "skill_gain": 0.0073435904,
+        "mastery_after": 0.3312678235
+      },
+      {
+        "step": 4,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 167,
+        "success": true,
+        "reward": 1.2656912472,
+        "skill_gain": 0.0096477163,
+        "mastery_after": 0.2781877479
+      },
+      {
+        "step": 5,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 251,
+        "success": true,
+        "reward": 1.3998945214,
+        "skill_gain": 0.0072638237,
+        "mastery_after": 0.3385316472
+      },
+      {
+        "step": 6,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 169,
+        "success": true,
+        "reward": 0.4336870796,
+        "skill_gain": 0.0112005484,
+        "mastery_after": 0.2893882963
+      },
+      {
+        "step": 7,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 254,
+        "success": true,
+        "reward": 0.8338870998,
+        "skill_gain": 0.0071849235,
+        "mastery_after": 0.3457165707
+      },
+      {
+        "step": 8,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 168,
+        "success": false,
+        "reward": -0.4366356495,
+        "skill_gain": 0.0027566866,
+        "mastery_after": 0.2921449829
+      },
+      {
+        "step": 9,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 255,
+        "success": true,
+        "reward": 1.0330602007,
+        "skill_gain": 0.0068577751,
+        "mastery_after": 0.3525743458
+      },
+      {
+        "step": 10,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 253,
+        "success": true,
+        "reward": 0.214061899,
+        "skill_gain": 0.0069617061,
+        "mastery_after": 0.3595360518
+      },
+      {
+        "step": 11,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 253,
+        "success": true,
+        "reward": 0.4731615708,
+        "skill_gain": 0.0069567719,
+        "mastery_after": 0.3664928238
+      },
+      {
+        "step": 12,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 251,
+        "success": true,
+        "reward": 0.1040561371,
+        "skill_gain": 0.0068812069,
+        "mastery_after": 0.3733740307
+      },
+      {
+        "step": 13,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 252,
+        "success": true,
+        "reward": -0.457256417,
+        "skill_gain": 0.0068064627,
+        "mastery_after": 0.3801804933
+      },
+      {
+        "step": 14,
+        "action": 6,
+        "label": "Easy Linked Lists",
+        "problem_id": 134,
+        "success": false,
+        "reward": -0.8679957472,
+        "skill_gain": 0.0022511665,
+        "mastery_after": 0.1732511665
+      },
+      {
+        "step": 15,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 169,
+        "success": false,
+        "reward": -0.4623665547,
+        "skill_gain": 0.0027459926,
+        "mastery_after": 0.2948909755
+      },
+      {
+        "step": 16,
+        "action": 30,
+        "label": "Easy Binary Search",
+        "problem_id": 253,
+        "success": true,
+        "reward": 0.8008708183,
+        "skill_gain": 0.0063400298,
+        "mastery_after": 0.3865205231
+      },
+      {
+        "step": 17,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 166,
+        "success": true,
+        "reward": 1.0565155809,
+        "skill_gain": 0.0105770225,
+        "mastery_after": 0.305467998
+      },
+      {
+        "step": 18,
+        "action": 21,
+        "label": "Easy Graphs",
+        "problem_id": 206,
+        "success": true,
+        "reward": 0.3617288089,
+        "skill_gain": 0.0098056937,
+        "mastery_after": 0.0995056937
+      },
+      {
+        "step": 19,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 167,
+        "success": true,
+        "reward": 0.8493922516,
+        "skill_gain": 0.0091606486,
+        "mastery_after": 0.3146286466
+      }
+    ],
+    "errors": []
+  },
+  "dqn_seed2": {
+    "env_seed": 10000300,
+    "n_steps": 20,
+    "reproducible": true,
+    "diverges_on_other_seed": true,
+    "first_actions": [
+      9,
+      16,
+      24,
+      9,
+      9
+    ],
+    "trace": [
+      {
+        "step": 0,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 146,
+        "success": true,
+        "reward": 1.0638609387,
+        "skill_gain": 0.008154165,
+        "mastery_after": 0.257454165
+      },
+      {
+        "step": 1,
+        "action": 16,
+        "label": "Medium Recursion",
+        "problem_id": 182,
+        "success": true,
+        "reward": 0.712887032,
+        "skill_gain": 0.0095743822,
+        "mastery_after": 0.2836743822
+      },
+      {
+        "step": 2,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 224,
+        "success": false,
+        "reward": -0.9389226589,
+        "skill_gain": 0.0020765585,
+        "mastery_after": 0.2373765585
+      },
+      {
+        "step": 3,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 147,
+        "success": true,
+        "reward": 0.8736575298,
+        "skill_gain": 0.0078774638,
+        "mastery_after": 0.2653316287
+      },
+      {
+        "step": 4,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 150,
+        "success": true,
+        "reward": 0.6003709196,
+        "skill_gain": 0.0079800281,
+        "mastery_after": 0.2733116568
+      },
+      {
+        "step": 5,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 148,
+        "success": true,
+        "reward": 0.3158833978,
+        "skill_gain": 0.0078933484,
+        "mastery_after": 0.2812050052
+      },
+      {
+        "step": 6,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 149,
+        "success": true,
+        "reward": 0.3884593419,
+        "skill_gain": 0.0078076102,
+        "mastery_after": 0.2890126154
+      },
+      {
+        "step": 7,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 150,
+        "success": true,
+        "reward": 0.0271531313,
+        "skill_gain": 0.0077228033,
+        "mastery_after": 0.2967354186
+      },
+      {
+        "step": 8,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 147,
+        "success": true,
+        "reward": -0.6683938558,
+        "skill_gain": 0.0076389176,
+        "mastery_after": 0.3043743362
+      },
+      {
+        "step": 9,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 146,
+        "success": false,
+        "reward": -2.0,
+        "skill_gain": 0.0018889858,
+        "mastery_after": 0.3062633219
+      },
+      {
+        "step": 10,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 169,
+        "success": false,
+        "reward": -0.0795029014,
+        "skill_gain": 0.002927719,
+        "mastery_after": 0.248227719
+      },
+      {
+        "step": 11,
+        "action": 12,
+        "label": "Easy Queue",
+        "problem_id": 163,
+        "success": true,
+        "reward": 0.6861713013,
+        "skill_gain": 0.0076790456,
+        "mastery_after": 0.2559067647
+      },
+      {
+        "step": 12,
+        "action": 16,
+        "label": "Medium Recursion",
+        "problem_id": 183,
+        "success": true,
+        "reward": 0.4499878945,
+        "skill_gain": 0.0107307031,
+        "mastery_after": 0.2944050853
+      },
+      {
+        "step": 13,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 146,
+        "success": true,
+        "reward": 0.8998728785,
+        "skill_gain": 0.007463007,
+        "mastery_after": 0.3137263289
+      },
+      {
+        "step": 14,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 147,
+        "success": true,
+        "reward": 0.4369928545,
+        "skill_gain": 0.0074543609,
+        "mastery_after": 0.3211806898
+      },
+      {
+        "step": 15,
+        "action": 16,
+        "label": "Medium Recursion",
+        "problem_id": 185,
+        "success": true,
+        "reward": 0.7636282745,
+        "skill_gain": 0.0109488997,
+        "mastery_after": 0.305353985
+      },
+      {
+        "step": 16,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 149,
+        "success": true,
+        "reward": 0.9966084885,
+        "skill_gain": 0.007373391,
+        "mastery_after": 0.3285540808
+      },
+      {
+        "step": 17,
+        "action": 16,
+        "label": "Medium Recursion",
+        "problem_id": 181,
+        "success": true,
+        "reward": 1.2042699022,
+        "skill_gain": 0.0107790028,
+        "mastery_after": 0.3161329879
+      },
+      {
+        "step": 18,
+        "action": 9,
+        "label": "Easy Stack",
+        "problem_id": 146,
+        "success": true,
+        "reward": 0.9549569053,
+        "skill_gain": 0.0072933006,
+        "mastery_after": 0.3358473814
+      },
+      {
+        "step": 19,
+        "action": 16,
+        "label": "Medium Recursion",
+        "problem_id": 184,
+        "success": true,
+        "reward": 0.4547801157,
+        "skill_gain": 0.0090199809,
+        "mastery_after": 0.3251529688
+      }
+    ],
+    "errors": []
+  },
+  "double_dqn_seed0": {
+    "env_seed": 10000300,
+    "n_steps": 20,
+    "reproducible": true,
+    "diverges_on_other_seed": true,
+    "first_actions": [
+      4,
+      24,
+      4,
+      24,
+      4
+    ],
+    "trace": [
+      {
+        "step": 0,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 121,
+        "success": true,
+        "reward": 1.0518599683,
+        "skill_gain": 0.011586738,
+        "mastery_after": 0.264886738
+      },
+      {
+        "step": 1,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 222,
+        "success": true,
+        "reward": 1.0452935305,
+        "skill_gain": 0.0083062341,
+        "mastery_after": 0.2436062341
+      },
+      {
+        "step": 2,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 125,
+        "success": true,
+        "reward": 0.7465981915,
+        "skill_gain": 0.0114069436,
+        "mastery_after": 0.2762936817
+      },
+      {
+        "step": 3,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 223,
+        "success": true,
+        "reward": 0.9195131909,
+        "skill_gain": 0.0082160111,
+        "mastery_after": 0.2518222452
+      },
+      {
+        "step": 4,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 122,
+        "success": true,
+        "reward": 1.2641073263,
+        "skill_gain": 0.0095454482,
+        "mastery_after": 0.2858391299
+      },
+      {
+        "step": 5,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 221,
+        "success": true,
+        "reward": 1.4093867641,
+        "skill_gain": 0.0081267681,
+        "mastery_after": 0.2599490133
+      },
+      {
+        "step": 6,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 124,
+        "success": true,
+        "reward": 0.4337146835,
+        "skill_gain": 0.0110818199,
+        "mastery_after": 0.2969209498
+      },
+      {
+        "step": 7,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 224,
+        "success": true,
+        "reward": 0.8306547366,
+        "skill_gain": 0.0080384945,
+        "mastery_after": 0.2679875078
+      },
+      {
+        "step": 8,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 123,
+        "success": false,
+        "reward": -0.4334054565,
+        "skill_gain": 0.0027274651,
+        "mastery_after": 0.2996484149
+      },
+      {
+        "step": 9,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 225,
+        "success": true,
+        "reward": 1.0341491845,
+        "skill_gain": 0.0076741572,
+        "mastery_after": 0.275661665
+      },
+      {
+        "step": 10,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 223,
+        "success": true,
+        "reward": 0.2014644141,
+        "skill_gain": 0.0077903996,
+        "mastery_after": 0.2834520646
+      },
+      {
+        "step": 11,
+        "action": 6,
+        "label": "Easy Linked Lists",
+        "problem_id": 133,
+        "success": true,
+        "reward": 1.3417338866,
+        "skill_gain": 0.009004666,
+        "mastery_after": 0.180004666
+      },
+      {
+        "step": 12,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 121,
+        "success": true,
+        "reward": 0.5947476417,
+        "skill_gain": 0.009237407,
+        "mastery_after": 0.3088858219
+      },
+      {
+        "step": 13,
+        "action": 15,
+        "label": "Easy Recursion",
+        "problem_id": 177,
+        "success": true,
+        "reward": 1.1945835999,
+        "skill_gain": 0.0078847853,
+        "mastery_after": 0.2819847853
+      },
+      {
+        "step": 14,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 122,
+        "success": true,
+        "reward": 0.6389805878,
+        "skill_gain": 0.0091155686,
+        "mastery_after": 0.3180013905
+      },
+      {
+        "step": 15,
+        "action": 15,
+        "label": "Easy Recursion",
+        "problem_id": 180,
+        "success": false,
+        "reward": -0.4366401441,
+        "skill_gain": 0.001949785,
+        "mastery_after": 0.2839345704
+      },
+      {
+        "step": 16,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 123,
+        "success": true,
+        "reward": 1.1916982398,
+        "skill_gain": 0.0103359071,
+        "mastery_after": 0.3283372976
+      },
+      {
+        "step": 17,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 221,
+        "success": true,
+        "reward": 0.9546544566,
+        "skill_gain": 0.0077832024,
+        "mastery_after": 0.2912352671
+      },
+      {
+        "step": 18,
+        "action": 4,
+        "label": "Medium Strings",
+        "problem_id": 121,
+        "success": false,
+        "reward": -0.8274197953,
+        "skill_gain": 0.0026055912,
+        "mastery_after": 0.3309428888
+      },
+      {
+        "step": 19,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 222,
+        "success": true,
+        "reward": 1.3087144458,
+        "skill_gain": 0.0074372057,
+        "mastery_after": 0.2986724728
+      }
+    ],
+    "errors": []
+  },
+  "double_dqn_seed1": {
+    "env_seed": 10000300,
+    "n_steps": 20,
+    "reproducible": true,
+    "diverges_on_other_seed": true,
+    "first_actions": [
+      31,
+      24,
+      31,
+      24,
+      31
+    ],
+    "trace": [
+      {
+        "step": 0,
+        "action": 31,
+        "label": "Medium Binary Search",
+        "problem_id": 256,
+        "success": true,
+        "reward": 1.0412456037,
+        "skill_gain": 0.0106060472,
+        "mastery_after": 0.3271060472
+      },
+      {
+        "step": 1,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 222,
+        "success": true,
+        "reward": 1.0452935305,
+        "skill_gain": 0.0083062341,
+        "mastery_after": 0.2436062341
+      },
+      {
+        "step": 2,
+        "action": 31,
+        "label": "Medium Binary Search",
+        "problem_id": 260,
+        "success": true,
+        "reward": 0.7414020834,
+        "skill_gain": 0.0104414704,
+        "mastery_after": 0.3375475176
+      },
+      {
+        "step": 3,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 223,
+        "success": true,
+        "reward": 0.9195131909,
+        "skill_gain": 0.0082160111,
+        "mastery_after": 0.2518222452
+      },
+      {
+        "step": 4,
+        "action": 31,
+        "label": "Medium Binary Search",
+        "problem_id": 257,
+        "success": true,
+        "reward": 1.2515943511,
+        "skill_gain": 0.0087375303,
+        "mastery_after": 0.3462850479
+      },
+      {
+        "step": 5,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 221,
+        "success": true,
+        "reward": 1.4093867641,
+        "skill_gain": 0.0081267681,
+        "mastery_after": 0.2599490133
+      },
+      {
+        "step": 6,
+        "action": 31,
+        "label": "Medium Binary Search",
+        "problem_id": 259,
+        "success": true,
+        "reward": 1.6494260036,
+        "skill_gain": 0.0101438649,
+        "mastery_after": 0.3564289128
+      },
+      {
+        "step": 7,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 224,
+        "success": false,
+        "reward": -0.941600055,
+        "skill_gain": 0.0020096236,
+        "mastery_after": 0.261958637
+      },
+      {
+        "step": 8,
+        "action": 25,
+        "label": "Medium Dynamic Programming",
+        "problem_id": 227,
+        "success": true,
+        "reward": 0.5559304769,
+        "skill_gain": 0.009507465,
+        "mastery_after": 0.271466102
+      },
+      {
+        "step": 9,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 225,
+        "success": true,
+        "reward": 0.5302753225,
+        "skill_gain": 0.0079133949,
+        "mastery_after": 0.2793794969
+      },
+      {
+        "step": 10,
+        "action": 8,
+        "label": "Hard Linked Lists",
+        "problem_id": 143,
+        "success": false,
+        "reward": -1.2686122674,
+        "skill_gain": 0.0012863809,
+        "mastery_after": 0.1722863809
+      },
+      {
+        "step": 11,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 223,
+        "success": true,
+        "reward": 0.8959835418,
+        "skill_gain": 0.0073938599,
+        "mastery_after": 0.2867733568
+      },
+      {
+        "step": 12,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 222,
+        "success": false,
+        "reward": -0.6841396513,
+        "skill_gain": 0.0019367816,
+        "mastery_after": 0.2887101383
+      },
+      {
+        "step": 13,
+        "action": 31,
+        "label": "Medium Binary Search",
+        "problem_id": 258,
+        "success": true,
+        "reward": 0.8414922004,
+        "skill_gain": 0.0080325129,
+        "mastery_after": 0.3644614257
+      },
+      {
+        "step": 14,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 222,
+        "success": true,
+        "reward": 1.1781371415,
+        "skill_gain": 0.0075042171,
+        "mastery_after": 0.2962143554
+      },
+      {
+        "step": 15,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 223,
+        "success": false,
+        "reward": -1.0089342236,
+        "skill_gain": 0.0019111443,
+        "mastery_after": 0.2981254998
+      },
+      {
+        "step": 16,
+        "action": 31,
+        "label": "Medium Binary Search",
+        "problem_id": 259,
+        "success": true,
+        "reward": 1.1003867129,
+        "skill_gain": 0.009595132,
+        "mastery_after": 0.3740565576
+      },
+      {
+        "step": 17,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 224,
+        "success": true,
+        "reward": 1.0744950828,
+        "skill_gain": 0.0076082489,
+        "mastery_after": 0.3057337487
+      },
+      {
+        "step": 18,
+        "action": 24,
+        "label": "Easy Dynamic Programming",
+        "problem_id": 223,
+        "success": true,
+        "reward": 0.006594351,
+        "skill_gain": 0.007541177,
+        "mastery_after": 0.3132749257
+      },
+      {
+        "step": 19,
+        "action": 31,
+        "label": "Medium Binary Search",
+        "problem_id": 257,
+        "success": true,
+        "reward": 1.1744296648,
+        "skill_gain": 0.0097129271,
+        "mastery_after": 0.3837694848
+      }
+    ],
+    "errors": []
+  },
+  "double_dqn_seed2": {
+    "env_seed": 10000300,
+    "n_steps": 20,
+    "reproducible": true,
+    "diverges_on_other_seed": true,
+    "first_actions": [
+      13,
+      12,
+      34,
+      12,
+      34
+    ],
+    "trace": [
+      {
+        "step": 0,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 166,
+        "success": true,
+        "reward": 1.0532035588,
+        "skill_gain": 0.0117108761,
+        "mastery_after": 0.2570108761
+      },
+      {
+        "step": 1,
+        "action": 12,
+        "label": "Easy Queue",
+        "problem_id": 162,
+        "success": true,
+        "reward": 0.844893856,
+        "skill_gain": 0.0080704088,
+        "mastery_after": 0.2650812849
+      },
+      {
+        "step": 2,
+        "action": 34,
+        "label": "Medium Sorting",
+        "problem_id": 275,
+        "success": true,
+        "reward": 0.7506725082,
+        "skill_gain": 0.0121639801,
+        "mastery_after": 0.2282639801
+      },
+      {
+        "step": 3,
+        "action": 12,
+        "label": "Easy Queue",
+        "problem_id": 163,
+        "success": true,
+        "reward": 0.9198644546,
+        "skill_gain": 0.0079827473,
+        "mastery_after": 0.2730640323
+      },
+      {
+        "step": 4,
+        "action": 34,
+        "label": "Medium Sorting",
+        "problem_id": 272,
+        "success": true,
+        "reward": 1.2739188663,
+        "skill_gain": 0.0101789442,
+        "mastery_after": 0.2384429243
+      },
+      {
+        "step": 5,
+        "action": 12,
+        "label": "Easy Queue",
+        "problem_id": 161,
+        "success": true,
+        "reward": 1.4068487726,
+        "skill_gain": 0.0078960381,
+        "mastery_after": 0.2809600703
+      },
+      {
+        "step": 6,
+        "action": 34,
+        "label": "Medium Sorting",
+        "problem_id": 274,
+        "success": true,
+        "reward": 0.4335436924,
+        "skill_gain": 0.0118172791,
+        "mastery_after": 0.2502602035
+      },
+      {
+        "step": 7,
+        "action": 12,
+        "label": "Easy Queue",
+        "problem_id": 164,
+        "success": true,
+        "reward": 0.8315189907,
+        "skill_gain": 0.0078102707,
+        "mastery_after": 0.288770341
+      },
+      {
+        "step": 8,
+        "action": 34,
+        "label": "Medium Sorting",
+        "problem_id": 273,
+        "success": false,
+        "reward": -0.7467751112,
+        "skill_gain": 0.0029084768,
+        "mastery_after": 0.2531686803
+      },
+      {
+        "step": 9,
+        "action": 12,
+        "label": "Easy Queue",
+        "problem_id": 165,
+        "success": false,
+        "reward": -1.0097942917,
+        "skill_gain": 0.0019313587,
+        "mastery_after": 0.2907016997
+      },
+      {
+        "step": 10,
+        "action": 13,
+        "label": "Medium Queue",
+        "problem_id": 168,
+        "success": true,
+        "reward": 0.287620424,
+        "skill_gain": 0.0103518014,
+        "mastery_after": 0.3010535011
+      },
+      {
+        "step": 11,
+        "action": 27,
+        "label": "Easy Greedy",
+        "problem_id": 236,
+        "success": false,
+        "reward": -1.0002435399,
+        "skill_gain": 0.0020947525,
+        "mastery_after": 0.2306947525
+      },
+      {
+        "step": 12,
+        "action": 34,
+        "label": "Medium Sorting",
+        "problem_id": 271,
+        "success": true,
+        "reward": 0.8495690317,
+        "skill_gain": 0.0076432898,
+        "mastery_after": 0.2608119701
+      },
+      {
+        "step": 13,
+        "action": 12,
+        "label": "Easy Queue",
+        "problem_id": 161,
+        "success": false,
+        "reward": -0.8587357562,
+        "skill_gain": 0.0018980035,
+        "mastery_after": 0.3029515047
+      },
+      {
+        "step": 14,
+        "action": 34,
+        "label": "Medium Sorting",
+        "problem_id": 274,
+        "success": true,
+        "reward": 1.0527901324,
+        "skill_gain": 0.0108264499,
+        "mastery_after": 0.2716384201
+      },
+      {
+        "step": 15,
+        "action": 12,
+        "label": "Easy Queue",
+        "problem_id": 164,
+        "success": true,
+        "reward": 1.054543048,
+        "skill_gain": 0.0073357649,
+        "mastery_after": 0.3102872696
+      },
+      {
+        "step": 16,
+        "action": 34,
+        "label": "Medium Sorting",
+        "problem_id": 273,
+        "success": false,
+        "reward": -0.950677704,
+        "skill_gain": 0.002825544,
+        "mastery_after": 0.2744639641
+      },
+      {
+        "step": 17,
+        "action": 12,
+        "label": "Easy Queue",
+        "problem_id": 162,
+        "success": true,
+        "reward": 1.0168333037,
+        "skill_gain": 0.0071795397,
+        "mastery_after": 0.3174668093
+      },
+      {
+        "step": 18,
+        "action": 34,
+        "label": "Medium Sorting",
+        "problem_id": 271,
+        "success": true,
+        "reward": 1.4645732878,
+        "skill_gain": 0.0110706599,
+        "mastery_after": 0.285534624
+      },
+      {
+        "step": 19,
+        "action": 27,
+        "label": "Easy Greedy",
+        "problem_id": 237,
+        "success": true,
+        "reward": 0.7996090131,
+        "skill_gain": 0.0083562567,
+        "mastery_after": 0.2390510092
+      }
+    ],
+    "errors": []
+  }
+}

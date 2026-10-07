@@ -1,0 +1,15 @@
+# Adaptive Coding-Practice Recommendation with Deep RL
+# Python 3.11+ (developed and tested on Python 3.14 / numpy 2.5)
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.4
+scipy>=1.12
+torch>=2.2
+gymnasium>=0.29
+matplotlib>=3.8
+seaborn>=0.13
+tensorboard>=2.15
+fastapi>=0.110
+uvicorn>=0.27
+streamlit>=1.32
+pytest>=8.0

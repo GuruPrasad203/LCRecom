@@ -1,0 +1,181 @@
+problem_id,title,topic,difficulty,prerequisite_topics,expected_time
+101,Two Sum,Arrays,1,,8
+102,Best Time to Buy and Sell Stock,Arrays,1,,16
+103,Merge Sorted Array,Arrays,1,,15
+104,Move Zeroes,Arrays,1,,12
+105,Rotate Array,Arrays,1,,12
+106,Product of Array Except Self,Arrays,2,,38
+107,Next Permutation,Arrays,2,,21
+108,Longest Consecutive Sequence,Arrays,2,,34
+109,Find All Duplicates in an Array,Arrays,2,,24
+110,Subarray Sum Equals K,Arrays,2,,21
+111,Trapping Rain Water,Arrays,3,,66
+112,First Missing Positive,Arrays,3,,85
+113,Merge K Sorted Arrays,Arrays,3,,75
+114,Sliding Window Maximum,Arrays,3,,76
+115,Count of Range Sum,Arrays,3,,74
+116,Valid Anagram,Strings,1,Arrays,16
+117,Reverse String,Strings,1,Arrays,13
+118,Valid Palindrome,Strings,1,Arrays,9
+119,First Unique Character in a String,Strings,1,Arrays,17
+120,Implement strStr,Strings,1,Arrays,12
+121,Longest Substring Without Repeating Characters,Strings,2,Arrays,30
+122,Group Anagrams,Strings,2,Arrays,27
+123,Longest Palindromic Substring,Strings,2,Arrays,23
+124,String to Integer (atoi),Strings,2,Arrays,39
+125,Encode and Decode Strings,Strings,2,Arrays,36
+126,Regular Expression Matching,Strings,3,Arrays,71
+127,Distinct Subsequences,Strings,3,Arrays,61
+128,Wildcard Matching,Strings,3,Arrays,78
+129,Minimum Window Substring,Strings,3,Arrays,67
+130,Text Justification,Strings,3,Arrays,63
+131,Reverse Linked List,Linked Lists,1,Arrays,12
+132,Merge Two Sorted Lists,Linked Lists,1,Arrays,10
+133,Linked List Cycle,Linked Lists,1,Arrays,9
+134,Middle of the Linked List,Linked Lists,1,Arrays,14
+135,Remove Duplicates from Sorted List,Linked Lists,1,Arrays,17
+136,Add Two Numbers,Linked Lists,2,Arrays,21
+137,Odd Even Linked List,Linked Lists,2,Arrays,38
+138,Remove Nth Node From End,Linked Lists,2,Arrays,37
+139,Sort List,Linked Lists,2,Arrays,25
+140,Rotate List,Linked Lists,2,Arrays,33
+141,Merge K Sorted Lists,Linked Lists,3,Arrays,51
+142,Reverse Nodes in k-Group,Linked Lists,3,Arrays,76
+143,Copy List with Random Pointer,Linked Lists,3,Arrays,73
+144,Flatten Multilevel Doubly Linked List,Linked Lists,3,Arrays,59
+145,Add Two Numbers II,Linked Lists,3,Arrays,47
+146,Valid Parentheses,Stack,1,Arrays,18
+147,Min Stack,Stack,1,Arrays,12
+148,Baseball Game,Stack,1,Arrays,17
+149,Next Greater Element I,Stack,1,Arrays,15
+150,Remove All Adjacent Duplicates In String,Stack,1,Arrays,16
+151,Daily Temperatures,Stack,2,Arrays,35
+152,Next Greater Element II,Stack,2,Arrays,24
+153,Decode String,Stack,2,Arrays,27
+154,Evaluate Reverse Polish Notation,Stack,2,Arrays,29
+155,Asteroid Collision,Stack,2,Arrays,30
+156,Largest Rectangle in Histogram,Stack,3,Arrays,46
+157,Maximal Rectangle,Stack,3,Arrays,67
+158,Basic Calculator,Stack,3,Arrays,51
+159,Basic Calculator II,Stack,3,Arrays,75
+160,Score of Parentheses,Stack,3,Arrays,73
+161,Implement Queue using Stacks,Queue,1,Arrays,18
+162,Moving Average from Data Stream,Queue,1,Arrays,16
+163,Number of Students Unable to Eat Lunch,Queue,1,Arrays,12
+164,Recent Counter,Queue,1,Arrays,18
+165,Design Circular Queue (Easy),Queue,1,Arrays,12
+166,Queue Reconstruction by Height,Queue,2,Arrays,26
+167,Design Circular Queue,Queue,2,Arrays,39
+168,Design Front Middle Back Queue,Queue,2,Arrays,27
+169,Rotting Oranges,Queue,2,Arrays,21
+170,Open the Lock,Queue,2,Arrays,29
+171,Shortest Path in a Grid with Obstacles Elimination,Queue,3,Arrays,77
+172,Find Median from Data Stream,Queue,3,Arrays,52
+173,Design Skiplist,Queue,3,Arrays,63
+174,Sliding Window Median,Queue,3,Arrays,50
+175,Design Hit Counter,Queue,3,Arrays,73
+176,Fibonacci Number,Recursion,1,Arrays,13
+177,Climbing Stairs,Recursion,1,Arrays,11
+178,Sum of Digits,Recursion,1,Arrays,10
+179,Power of Four,Recursion,1,Arrays,14
+180,Number of Steps to Reduce a Number to Zero,Recursion,1,Arrays,15
+181,Generate Parentheses,Recursion,2,Arrays,39
+182,Permutations,Recursion,2,Arrays,29
+183,Combinations,Recursion,2,Arrays,23
+184,Subset Sum,Recursion,2,Arrays,37
+185,Decode Ways,Recursion,2,Arrays,33
+186,N-Queens,Recursion,3,Arrays,73
+187,Sudoku Solver,Recursion,3,Arrays,48
+188,Word Break II,Recursion,3,Arrays,57
+189,Expression Add Operators,Recursion,3,Arrays,76
+190,Rat in a Maze,Recursion,3,Arrays,79
+191,Invert Binary Tree,Trees,1,Recursion,12
+192,Maximum Depth of Binary Tree,Trees,1,Recursion,16
+193,Same Tree,Trees,1,Recursion,17
+194,Symmetric Tree,Trees,1,Recursion,12
+195,Path Sum,Trees,1,Recursion,17
+196,Binary Tree Level Order Traversal,Trees,2,Recursion,26
+197,Validate Binary Search Tree,Trees,2,Recursion,25
+198,Lowest Common Ancestor of a BST,Trees,2,Recursion,34
+199,Binary Tree Zigzag Level Order Traversal,Trees,2,Recursion,33
+200,Construct Binary Tree from Preorder and Inorder Traversal,Trees,2,Recursion,22
+201,Binary Tree Maximum Path Sum,Trees,3,Recursion,79
+202,Recover Binary Search Tree,Trees,3,Recursion,53
+203,Count of Smaller Numbers After Self,Trees,3,Recursion,78
+204,Serialize and Deserialize Binary Tree,Trees,3,Recursion,45
+205,Populating Next Right Pointers,Trees,3,Recursion,77
+206,Find the Town Judge,Graphs,1,Stack;Queue;Trees,16
+207,Find if Path Exists in Graph,Graphs,1,Stack;Queue;Trees,16
+208,Number of Provinces,Graphs,1,Stack;Queue;Trees,15
+209,Detect Cycle in an Undirected Graph,Graphs,1,Stack;Queue;Trees,13
+210,Find Center of Star Graph,Graphs,1,Stack;Queue;Trees,15
+211,Number of Islands,Graphs,2,Stack;Queue;Trees,25
+212,Course Schedule,Graphs,2,Stack;Queue;Trees,36
+213,Clone Graph,Graphs,2,Stack;Queue;Trees,31
+214,Word Ladder,Graphs,2,Stack;Queue;Trees,29
+215,Is Graph Bipartite,Graphs,2,Stack;Queue;Trees,30
+216,Alien Dictionary,Graphs,3,Stack;Queue;Trees,68
+217,Word Ladder II,Graphs,3,Stack;Queue;Trees,46
+218,Reconstruct Itinerary,Graphs,3,Stack;Queue;Trees,50
+219,Cheapest Flights Within K Stops,Graphs,3,Stack;Queue;Trees,55
+220,Minimum Height Trees,Graphs,3,Stack;Queue;Trees,49
+221,Climbing Stairs (DP),Dynamic Programming,1,Recursion,12
+222,House Robber,Dynamic Programming,1,Recursion,15
+223,Min Cost Climbing Stairs,Dynamic Programming,1,Recursion,15
+224,Counting Bits,Dynamic Programming,1,Recursion,13
+225,Nth Tribonacci Number,Dynamic Programming,1,Recursion,17
+226,Coin Change,Dynamic Programming,2,Recursion,31
+227,Longest Increasing Subsequence,Dynamic Programming,2,Recursion,21
+228,Unique Paths,Dynamic Programming,2,Recursion,36
+229,Partition Equal Subset Sum,Dynamic Programming,2,Recursion,32
+230,Word Break (DP),Dynamic Programming,2,Recursion,33
+231,Edit Distance,Dynamic Programming,3,Recursion,68
+232,Longest Valid Parentheses,Dynamic Programming,3,Recursion,67
+233,Burst Balloons,Dynamic Programming,3,Recursion,48
+234,Minimum Window Subsequence,Dynamic Programming,3,Recursion,67
+235,Stone Game II,Dynamic Programming,3,Recursion,77
+236,Assign Cookies,Greedy,1,Sorting,11
+237,Lemonade Change,Greedy,1,Sorting,14
+238,Best Time to Buy and Sell Stock II,Greedy,1,Sorting,8
+239,Maximum Units on a Truck,Greedy,1,Sorting,11
+240,Can Place Flowers,Greedy,1,Sorting,12
+241,Jump Game,Greedy,2,Sorting,40
+242,Gas Station,Greedy,2,Sorting,24
+243,Partition Labels,Greedy,2,Sorting,25
+244,Task Scheduler,Greedy,2,Sorting,28
+245,Minimum Number of Arrows to Burst Balloons,Greedy,2,Sorting,40
+246,Candy,Greedy,3,Sorting,79
+247,IPO,Greedy,3,Sorting,46
+248,Remove K Digits,Greedy,3,Sorting,54
+249,Meeting Rooms III,Greedy,3,Sorting,78
+250,Minimum Incompatibility,Greedy,3,Sorting,47
+251,Binary Search,Binary Search,1,Arrays;Sorting,17
+252,Search Insert Position,Binary Search,1,Arrays;Sorting,11
+253,First Bad Version,Binary Search,1,Arrays;Sorting,18
+254,Sqrt(x),Binary Search,1,Arrays;Sorting,11
+255,Guess Number Higher or Lower,Binary Search,1,Arrays;Sorting,12
+256,Search in Rotated Sorted Array,Binary Search,2,Arrays;Sorting,33
+257,Find Peak Element,Binary Search,2,Arrays;Sorting,22
+258,Search a 2D Matrix,Binary Search,2,Arrays;Sorting,31
+259,Capacity to Ship Packages Days,Binary Search,2,Arrays;Sorting,30
+260,Find Smallest Letter Greater Than Target,Binary Search,2,Arrays;Sorting,36
+261,Median of Two Sorted Arrays,Binary Search,3,Arrays;Sorting,85
+262,Split Array Largest Sum,Binary Search,3,Arrays;Sorting,72
+263,Find in Mountain Array,Binary Search,3,Arrays;Sorting,61
+264,Kth Smallest Element in a Sorted Matrix,Binary Search,3,Arrays;Sorting,61
+265,Smallest Range Covering Elements from K Lists,Binary Search,3,Arrays;Sorting,62
+266,Sort Array by Parity,Sorting,1,Arrays,16
+267,Relative Sort Array,Sorting,1,Arrays,11
+268,Height Checker,Sorting,1,Arrays,9
+269,Third Maximum Number,Sorting,1,Arrays,11
+270,Missing Number,Sorting,1,Arrays,8
+271,Sort Colors,Sorting,2,Arrays,22
+272,Kth Largest Element in an Array,Sorting,2,Arrays,21
+273,Sort an Array,Sorting,2,Arrays,36
+274,Merge Intervals,Sorting,2,Arrays,35
+275,Reorder Data in Log Files,Sorting,2,Arrays,34
+276,Maximum Gap,Sorting,3,Arrays,63
+277,Sort Items by Groups Respected Dependencies,Sorting,3,Arrays,74
+278,Count Inversions,Sorting,3,Arrays,51
+279,Meeting Rooms II,Sorting,3,Arrays,81
+280,Skyline Problem,Sorting,3,Arrays,65

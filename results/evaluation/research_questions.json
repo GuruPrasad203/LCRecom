@@ -1,0 +1,159 @@
+{
+  "RQ1": {
+    "question": "Does RL-based recommendation improve student skill more than difficulty-based recommendation?",
+    "vs_difficulty": {
+      "a": "Q-Learning",
+      "b": "Difficulty-Based",
+      "mean_a": 0.0139,
+      "mean_b": 0.0145,
+      "diff": -0.0006,
+      "p_t": 0.20806719112106878,
+      "p_wilcoxon": 0.9032264724373817,
+      "significant_05": false
+    },
+    "vs_prerequisite": {
+      "a": "Q-Learning",
+      "b": "Prerequisite-Based",
+      "mean_a": 0.0139,
+      "mean_b": 0.0171,
+      "diff": -0.0032,
+      "p_t": 9.804606890584416e-06,
+      "p_wilcoxon": 2.551823854446411e-07,
+      "significant_05": true
+    },
+    "vs_random": {
+      "a": "Q-Learning",
+      "b": "Random",
+      "mean_a": 0.0139,
+      "mean_b": 0.013,
+      "diff": 0.0009,
+      "p_t": 0.050614158997024726,
+      "p_wilcoxon": 0.018529480323195457,
+      "significant_05": true
+    },
+    "best_rl_vs_best_baseline": {
+      "a": "SARSA",
+      "b": "Prerequisite-Based",
+      "mean_a": 0.0145,
+      "mean_b": 0.0171,
+      "diff": -0.0026,
+      "p_t": 3.0916907871678246e-05,
+      "p_wilcoxon": 2.6885420083999634e-05,
+      "significant_05": true
+    },
+    "best_pair_selection": {
+      "rule": "highest mean skill_gain over the 30 matched cells",
+      "best_rl": "SARSA",
+      "best_baseline": "Prerequisite-Based"
+    }
+  },
+  "RQ2": {
+    "question": "Does Q-Learning outperform SARSA for adaptive coding-practice recommendation?",
+    "skill_gain": {
+      "a": "Q-Learning",
+      "b": "SARSA",
+      "mean_a": 0.0139,
+      "mean_b": 0.0145,
+      "diff": -0.0006,
+      "p_t": 0.030780810317418725,
+      "p_wilcoxon": 0.0426517054438591,
+      "significant_05": true
+    },
+    "reward": {
+      "a": "Q-Learning",
+      "b": "SARSA",
+      "mean_a": 15.194,
+      "mean_b": 15.2949,
+      "diff": -0.1009,
+      "p_t": 0.8779335849340059,
+      "p_wilcoxon": 0.583757072687149,
+      "significant_05": false
+    },
+    "calibration": {
+      "a": "Q-Learning",
+      "b": "SARSA",
+      "mean_a": 0.8839,
+      "mean_b": 0.9017,
+      "diff": -0.0178,
+      "p_t": 0.44348937421400514,
+      "p_wilcoxon": 0.46189713860678905,
+      "significant_05": false
+    }
+  },
+  "RQ3": {
+    "question": "Does DQN outperform tabular Q-Learning when the state space becomes larger (continuous 26-dim state)?",
+    "skill_gain": {
+      "a": "DQN",
+      "b": "Q-Learning",
+      "mean_a": 0.0135,
+      "mean_b": 0.0139,
+      "diff": -0.0004,
+      "p_t": 0.06946414081202393,
+      "p_wilcoxon": 0.08793856762349606,
+      "significant_05": false
+    },
+    "calibration": {
+      "a": "DQN",
+      "b": "Q-Learning",
+      "mean_a": 0.8872,
+      "mean_b": 0.8839,
+      "diff": 0.0033,
+      "p_t": 0.8956764044942167,
+      "p_wilcoxon": 0.8569287714838678,
+      "significant_05": false
+    },
+    "reward": {
+      "a": "DQN",
+      "b": "Q-Learning",
+      "mean_a": 2.3662,
+      "mean_b": 15.194,
+      "diff": -12.8278,
+      "p_t": 2.8517893104297053e-08,
+      "p_wilcoxon": 1.862645149230957e-09,
+      "significant_05": true
+    }
+  },
+  "RQ4": {
+    "question": "Can the RL agent maintain an appropriate challenge level while reducing frustration? (and: does Double DQN improve over DQN?)",
+    "calibration_vs_prereq": {
+      "a": "DQN",
+      "b": "Prerequisite-Based",
+      "mean_a": 0.8872,
+      "mean_b": 0.9633,
+      "diff": -0.0761,
+      "p_t": 0.0001502802020155154,
+      "p_wilcoxon": 0.0005468394956854171,
+      "significant_05": true
+    },
+    "frustration_vs_random": {
+      "a": "DQN",
+      "b": "Random",
+      "mean_a": 0.0657,
+      "mean_b": 0.1842,
+      "diff": -0.1185,
+      "p_t": 0.018698307622898643,
+      "p_wilcoxon": 0.0447084811656367,
+      "significant_05": true
+    },
+    "skill_gain_double_vs_single": {
+      "a": "Double DQN",
+      "b": "DQN",
+      "mean_a": 0.0135,
+      "mean_b": 0.0135,
+      "diff": 0.0,
+      "p_t": 0.9334566017475122,
+      "p_wilcoxon": 0.6120056137442589,
+      "significant_05": false
+    },
+    "reward_double_vs_single": {
+      "a": "Double DQN",
+      "b": "DQN",
+      "mean_a": 12.058,
+      "mean_b": 2.3662,
+      "diff": 9.6919,
+      "p_t": 8.567020157286723e-08,
+      "p_wilcoxon": 3.5390257835388184e-08,
+      "significant_05": true
+    }
+  }
+}
