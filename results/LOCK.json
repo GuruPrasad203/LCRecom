@@ -1,13 +1,13 @@
 {
-  "locked_at": "2026-10-06T11:06:47+00:00",
+  "locked_at": "2026-10-13T05:48:52+00:00",
   "statement": "Data, models, configuration and design code are frozen. The held-out test split may now be read once, by evaluation/evaluate.py; no hyper-parameter, reward, geometry or selection-rule change is permitted afterwards.",
   "groups": {
     "data": 3,
-    "models": 24,
+    "models": 30,
     "config": 1,
-    "design": 20
+    "design": 22
   },
-  "n_files": 48,
+  "n_files": 56,
   "files": {
     "data/interactions.csv": {
       "group": "data",
@@ -23,6 +23,36 @@
       "group": "data",
       "md5": "9b4ec484da71d9e910815507dbb50d01",
       "bytes": 5615
+    },
+    "models/PPO_last_seed0.pt": {
+      "group": "models",
+      "md5": "44979f6a09d4a9f719fb8206ea4de910",
+      "bytes": 103087
+    },
+    "models/PPO_last_seed1.pt": {
+      "group": "models",
+      "md5": "320a8fe77895afba784654f7d3b0d055",
+      "bytes": 103087
+    },
+    "models/PPO_last_seed2.pt": {
+      "group": "models",
+      "md5": "a4d617f5570ba714108de476b7a54544",
+      "bytes": 103087
+    },
+    "models/PPO_seed0.pt": {
+      "group": "models",
+      "md5": "5b51d5421946356cfcd5453e4efb8bef",
+      "bytes": 103017
+    },
+    "models/PPO_seed1.pt": {
+      "group": "models",
+      "md5": "bed50abe67cc012ef1561babad355e04",
+      "bytes": 103017
+    },
+    "models/PPO_seed2.pt": {
+      "group": "models",
+      "md5": "97fcb586dfc4dbd70fe13011baff22ec",
+      "bytes": 103017
     },
     "models/double_dqn_last_seed0.pt": {
       "group": "models",
@@ -151,8 +181,8 @@
     },
     "agents/__init__.py": {
       "group": "design",
-      "md5": "d41d8cd98f00b204e9800998ecf8427e",
-      "bytes": 0
+      "md5": "13c1cfcbc4b72060e1b5c7594eb13e01",
+      "bytes": 364
     },
     "agents/base_tabular.py": {
       "group": "design",
@@ -168,6 +198,11 @@
       "group": "design",
       "md5": "1d9d3d4e721ae35a78f24a59f5bca863",
       "bytes": 9057
+    },
+    "agents/ppo_agent.py": {
+      "group": "design",
+      "md5": "2f8217983c9f40e96520a17f7aacc990",
+      "bytes": 16646
     },
     "agents/q_learning_agent.py": {
       "group": "design",
@@ -233,6 +268,11 @@
       "group": "design",
       "md5": "a827127698f5ca294cc779363344422e",
       "bytes": 1062
+    },
+    "training/train_ppo.py": {
+      "group": "design",
+      "md5": "f6f864272fee547461f73edfc6439eb5",
+      "bytes": 982
     },
     "training/train_qlearning.py": {
       "group": "design",
