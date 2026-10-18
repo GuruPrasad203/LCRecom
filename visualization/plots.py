@@ -1,4 +1,4 @@
-"""Phase 6 — the ten figures of the final report.
+"""Phase 6 — the figures of the final report.
 
 Every figure is produced from the artifacts written by Phases 1-5 (nothing is
 re-simulated except the two greedy action-distribution readouts, which reuse
@@ -7,7 +7,7 @@ the *locked* readout geometry of ``config.py``).
 ====  =========================================  =================================
   #   figure                                     source
 ====  =========================================  =================================
-  1   learning curves                            results/training/*_seed*.csv
+  1   learning curves (5 seeds)                  results/training/*_seed*.csv
   2   skill-gain bars (mean +/- sd, 30 cells)    results/evaluation/summary_by_strategy.csv
   3   reward bars                                results/evaluation/summary_by_strategy.csv
   4   2x2 metrics panel                          results/evaluation/summary_by_strategy.csv
@@ -16,8 +16,12 @@ the *locked* readout geometry of ``config.py``).
   7   DQN vs Q-Learning 12x3 action heatmaps     greedy readout (config geometry)
   8   calibration - frustration scatter          results/evaluation/cell_means.csv
   9   significance heatmap (paired p-values)      results/evaluation/per_run.csv
- 10   per-topic mastery-gain heatmaps            results/evaluation/per_run.csv
+  10   per-topic mastery-gain heatmaps            results/evaluation/per_run.csv
+  11   DQN / Double DQN loss curves (5 seeds)    results/training/*_seed*.csv
+  12   epsilon decay schedules                    results/training/*_seed0.csv
 ====  =========================================  =================================
+
+All figures are rendered at 300 dpi on a white background.
 
 Usage::
 
@@ -123,9 +127,81 @@ def fig_learning_curves() -> plt.Figure:
                         alpha=0.15, linewidth=0)
     ax.set_xlabel("training episode")
     ax.set_ylabel("episode reward (100-episode moving average)")
-    ax.set_title("Learning curves: mean $\\pm$ sd over 3 training seeds")
+    ax.set_title(f"Learning curves: mean $\\pm$ sd over "
+                 f"{len(TRAIN_SEEDS)} training seeds")
     ax.legend(frameon=True)
     ax.set_xlim(0, None)
+    return fig
+
+
+# --------------------------------------------------------------------- #
+# 11. DQN / Double DQN loss curves
+# --------------------------------------------------------------------- #
+def fig_loss_curves() -> plt.Figure:
+    curves = {"dqn": "DQN", "double_dqn": "Double DQN"}
+    fig, ax = plt.subplots(figsize=(9, 5))
+    for name, label in curves.items():
+        runs = []
+        for seed in TRAIN_SEEDS:
+            p = TRAIN_DIR / f"{name}_seed{seed}.csv"
+            if not p.exists():
+                continue
+            s = pd.read_csv(p)["loss"].rolling(100, min_periods=20).mean()
+            runs.append(s.to_numpy(dtype=float))
+        if not runs:
+            continue
+        arr = np.vstack(runs)
+        valid = ~np.isnan(arr).all(axis=0)
+        arr = arr[:, valid]
+        x = np.flatnonzero(valid)
+        mean = np.nanmean(arr, axis=0)
+        sd = np.nanstd(arr, axis=0)
+        ax.plot(x, mean, color=STRATEGY_COLORS[label], lw=2.0, label=label)
+        ax.fill_between(x, mean - sd, mean + sd, color=STRATEGY_COLORS[label],
+                        alpha=0.15, linewidth=0)
+    ax.set_xlabel("training episode")
+    ax.set_ylabel("Huber loss (100-episode moving average)")
+    ax.set_title(f"DQN training loss: mean $\\pm$ sd over {len(TRAIN_SEEDS)} seeds\n"
+                 "(warm-up: no gradient steps before episode "
+                 f"{1000 // 20})")
+    ax.legend(frameon=True)
+    ax.set_xlim(0, None)
+    return fig
+
+
+# --------------------------------------------------------------------- #
+# 12. epsilon decay curves
+# --------------------------------------------------------------------- #
+def fig_epsilon_decay() -> plt.Figure:
+    curves = {
+        "sarsa": ("SARSA", "episode"),
+        "q_learning": ("Q-Learning", "episode"),
+        "dqn": ("DQN", "step"),
+        "double_dqn": ("Double DQN", "step"),
+    }
+    fig, ax = plt.subplots(figsize=(9, 5))
+    for name, (label, basis) in curves.items():
+        p = TRAIN_DIR / f"{name}_seed0.csv"
+        if not p.exists():
+            continue
+        df = pd.read_csv(p)
+        y = df["epsilon"].to_numpy(dtype=float)
+        if basis == "step":
+            # epsilon decays over env steps; the CSV records it per episode,
+            # so plot against episode index (20 steps each) and note the
+            # underlying step-based schedule in the legend
+            x = df["episode"].to_numpy()
+        else:
+            x = df["episode"].to_numpy()
+        ax.plot(x, y, color=STRATEGY_COLORS[label], lw=2.0,
+                label=f"{label} ({basis}-based)")
+    ax.set_xlabel("training episode")
+    ax.set_ylabel("$\\varepsilon$")
+    ax.set_title("Exploration decay: $\\varepsilon$ over training "
+                 f"({len(TRAIN_SEEDS)} seeds shown for seed 0 schedule)")
+    ax.legend(frameon=True)
+    ax.set_xlim(0, None)
+    ax.set_ylim(0, None)
     return fig
 
 
@@ -436,6 +512,59 @@ def fig_mastery_gain_heatmaps() -> plt.Figure:
 
 
 # --------------------------------------------------------------------- #
+# 13. hyper-parameter sensitivity (defaults marked)
+# --------------------------------------------------------------------- #
+def fig_hyperparam_sensitivity() -> plt.Figure:
+    """OFAT sensitivity: one panel per (agent, factor).
+
+    The config.py default value is included in every grid and is marked with
+    a red dashed vertical line + a hollow diamond labelled 'default'.
+    """
+    df = pd.read_csv(RESULTS_DIR / "sensitivity_summary.csv")
+    agents = [a for a in ("q_learning", "dqn") if a in set(df["agent"])]
+    panels = [(a, f) for a in agents
+              for f in df.loc[df["agent"] == a, "factor"].unique()]
+    n = len(panels)
+    ncols = 3
+    nrows = int(np.ceil(n / ncols))
+    fig, axes = plt.subplots(nrows, ncols, figsize=(4.6 * ncols, 3.6 * nrows))
+    axes = np.atleast_1d(axes).ravel()
+    pretty_agent = {"q_learning": "Q-Learning", "dqn": "DQN"}
+    for i, (agent, factor) in enumerate(panels):
+        ax = axes[i]
+        sub = df[(df["agent"] == agent) & (df["factor"] == factor)].sort_values("value")
+        x = sub["value"].to_numpy(dtype=float)
+        y = sub["reward_mean"].to_numpy(dtype=float)
+        sd = sub["reward_sd"].to_numpy(dtype=float)
+        is_def = sub["is_default"].to_numpy(dtype=bool)
+        label = pretty_agent.get(agent, agent)
+        ax.errorbar(x, y, yerr=sd, color=STRATEGY_COLORS.get(label, "#1f3b73"),
+                    lw=2.0, marker="o", ms=6, capsize=4,
+                    ecolor="#9aa5b1", elinewidth=1.2, label="mean ± sd")
+        dmask = is_def
+        if dmask.any():
+            xd = float(x[dmask][0])
+            yd = float(y[dmask][0])
+            ax.axvline(xd, color="#e76f51", ls="--", lw=1.3)
+            ax.scatter([xd], [yd], s=110, facecolors="none",
+                       edgecolors="#e76f51", linewidths=2.0, zorder=5,
+                       label=f"default ({xd:g})")
+        ax.set_title(f"{label} — {factor}", fontsize=10)
+        ax.set_xlabel(factor)
+        ax.set_ylabel("readout reward")
+        ax.spines[["top", "right"]].set_visible(False)
+        if i == 0:
+            ax.legend(frameon=False, fontsize=8)
+    for j in range(n, len(axes)):
+        axes[j].axis("off")
+    fig.suptitle("Hyper-parameter sensitivity (one-factor-at-a-time; red line = "
+                 "config default; train split, 2 seeds x 600 episodes)",
+                 fontsize=11)
+    fig.tight_layout(rect=(0, 0, 1, 0.955))
+    return fig
+
+
+# --------------------------------------------------------------------- #
 # registry / driver
 # --------------------------------------------------------------------- #
 FIGURES: dict[int, tuple[str, Callable[[], plt.Figure]]] = {
@@ -449,6 +578,9 @@ FIGURES: dict[int, tuple[str, Callable[[], plt.Figure]]] = {
     8: ("08_calibration_frustration_scatter", fig_calibration_frustration),
     9: ("09_significance_heatmap", fig_significance_heatmap),
     10: ("10_mastery_gain_heatmaps", fig_mastery_gain_heatmaps),
+    11: ("11_dqn_loss_curves", fig_loss_curves),
+    12: ("12_epsilon_decay", fig_epsilon_decay),
+    13: ("13_hyperparam_sensitivity", fig_hyperparam_sensitivity),
 }
 
 
@@ -459,10 +591,10 @@ def render(which: list[int] | None = None, out_dir: Path = FIGURES_DIR) -> list[
         name, fn = FIGURES[idx]
         fig = fn()
         path = out_dir / f"{name}.png"
-        fig.savefig(path, dpi=160, bbox_inches="tight")
+        fig.savefig(path, dpi=300, bbox_inches="tight")
         plt.close(fig)
         written.append(path)
-        print(f"  [{idx:>2}/10] {path.name}")
+        print(f"  [{idx:>2}/{len(FIGURES)}] {path.name}")
     return written
 
 

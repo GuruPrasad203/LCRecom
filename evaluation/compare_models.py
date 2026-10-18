@@ -3,9 +3,16 @@
 Aggregation protocol
 --------------------
 Every strategy is summarised over the same 30 *cells* = 10 held-out students
-x 3 evaluation seeds; RL strategies are first averaged over their 3 training
+x 3 evaluation seeds; RL strategies are first averaged over their 5 training
 seeds inside each cell.  All paired significance tests therefore compare
 30 matched observations per strategy.
+
+Statistics reported
+-------------------
+* paired t-test + Wilcoxon signed-rank   (matched cells, 30 per strategy)
+* Welch t-test + Cohen's d               (each RL agent vs the best
+                                          baseline, independent cells)
+  written to significance_tests.csv / stats_tests.md
 
 Research questions answered here:
 
@@ -28,7 +35,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from config import RESULTS_DIR  # noqa: E402
+from config import RESULTS_DIR, TRAIN_SEEDS  # noqa: E402
 from evaluation.metrics import HIGHER_IS_BETTER, LOWER_IS_BETTER, SUMMARY_METRICS  # noqa: E402
 from evaluation.strategies import STRATEGY_LABELS, STRATEGY_ORDER, STRATEGY_TYPE  # noqa: E402
 
@@ -42,6 +49,7 @@ TABLE_COLUMNS = {
     "unproductive_repeat_rate": "Unprod. Repeat",
     "frustration_end": "Frustration",
     "total_reward": "Reward",
+    "prereq_violation_rate": "Prereq Viol.",
 }
 
 # ------------------------------------------------------------------ helpers
@@ -129,6 +137,88 @@ def best_strategy(
         for name in candidates
     }
     return max(means, key=means.get)
+
+
+def welch_test(cells: pd.DataFrame, metric: str, a: str, b: str) -> dict:
+    """Welch (unequal-variance, independent) t-test + Cohen's d.
+
+    Used for each RL agent vs the best baseline on the 30 cells each.
+    """
+    from scipy import stats
+
+    a = STRATEGY_LABELS.get(a, a)
+    b = STRATEGY_LABELS.get(b, b)
+    piv = cells.pivot_table(
+        index=["student_id", "eval_seed"], columns="strategy", values=metric
+    )
+    x, y = piv[a].to_numpy(), piv[b].to_numpy()
+    t, p = stats.ttest_ind(x, y, equal_var=False)
+    pooled = np.sqrt(((x.std(ddof=1) ** 2) * (len(x) - 1)
+                      + (y.std(ddof=1) ** 2) * (len(y) - 1))
+                     / (len(x) + len(y) - 2))
+    d = (x.mean() - y.mean()) / pooled if pooled > 0 else float("nan")
+    return {
+        "metric": metric,
+        "A": a,
+        "B": b,
+        "mean_A": float(x.mean()),
+        "mean_B": float(y.mean()),
+        "mean_diff": float(x.mean() - y.mean()),
+        "welch_t": float(t),
+        "p_welch": float(p),
+        "cohens_d": float(d),
+        "A_better": bool(x.mean() > y.mean()) if metric in HIGHER_IS_BETTER
+        else bool(x.mean() < y.mean()),
+        "significant_05": bool(p < 0.05),
+    }
+
+
+def write_stats_tests_md(paired: pd.DataFrame, welch: pd.DataFrame,
+                         best_rl: str, best_baseline: str,
+                         out: Path) -> None:
+    """Human-readable stats_tests.md (paired + Welch, real measured numbers)."""
+    L = STRATEGY_LABELS
+    lines: list[str] = []
+    lines.append("# Significance tests (test split, 30 matched cells)\n")
+    lines.append(f"Cells = 10 held-out students x 3 evaluation seeds; RL "
+                 f"strategies averaged over {len(TRAIN_SEEDS)} "
+                 f"training seeds inside each cell.\n")
+    lines.append("## Paired t-test + Wilcoxon (matched cells)\n")
+    lines.append("| metric | A | B | mean A | mean B | diff | paired *t* | "
+                 "*p* | Wilcoxon *p* | better |")
+    lines.append("|---|---|---|---|---|---|---|---|---|---|")
+    for _, r in paired.iterrows():
+        pw = f"{r['p_wilcoxon']:.4g}" if r["p_wilcoxon"] == r["p_wilcoxon"] else "n/a"
+        better = "A" if r["A_better"] else "B"
+        lines.append(
+            f"| {r['metric']} | {r['A']} | {r['B']} | {r['mean_A']:.4f} | "
+            f"{r['mean_B']:.4f} | {r['mean_diff']:.4f} | {r['t_stat']:.3f} | "
+            f"{r['p_paired_t']:.4g} | {pw} | {better} |"
+        )
+    lines.append("")
+    lines.append("## Welch t-test: each RL agent vs best baseline\n")
+    lines.append(f"Best RL = **{L[best_rl]}**, best baseline = "
+                 f"**{L[best_baseline]}** (highest mean skill gain over the "
+                 "30 cells; read-out, not a tuning step).  Welch test on "
+                 "independent cell sets (n = 30 each).\n")
+    lines.append("| metric | RL agent | baseline | mean (RL) | mean (base) | "
+                 "diff | Welch *t* | *p* | Cohen's *d* | sig. |")
+    lines.append("|---|---|---|---|---|---|---|---|---|---|")
+    for _, r in welch.iterrows():
+        sig = "yes" if r["significant_05"] else "no"
+        lines.append(
+            f"| {r['metric']} | {r['A']} | {r['B']} | {r['mean_A']:.4f} | "
+            f"{r['mean_B']:.4f} | {r['mean_diff']:.4f} | {r['welch_t']:.3f} | "
+            f"{r['p_welch']:.4g} | {r['cohens_d']:.3f} | {sig} |"
+        )
+    lines.append("")
+    lines.append("## Notes\n")
+    lines.append("* Prereq Viol. = fraction of recommendations whose topic "
+                 "had a prerequisite with mastery < 0.30 at decision time "
+                 "(lower is better; the agents never observe the DAG).")
+    lines.append("* All values are measured from "
+                 "`results/evaluation/per_run.csv` — nothing is estimated.")
+    out.write_text("\n".join(lines) + "\n")
 
 
 def answer_research_questions(
@@ -243,7 +333,22 @@ def main() -> None:
     seen: set[tuple[str, str, str]] = set()
     pairs = [p for p in pairs if not (p in seen or seen.add(p))]
     tests = [paired_test(cells, m, a, b) for m, a, b in pairs]
-    pd.DataFrame(tests).to_csv(EVAL_DIR / "significance_tests.csv", index=False)
+    paired_df = pd.DataFrame(tests)
+    paired_df.to_csv(EVAL_DIR / "significance_tests.csv", index=False)
+
+    # Welch t + Cohen's d: every RL agent vs the best baseline, on the key
+    # metrics (independent cell sets of 30 each)
+    welch_metrics = ["skill_gain", "total_reward", "completion_rate",
+                     "calibration", "prereq_violation_rate"]
+    welch_rows: list[dict] = []
+    for rl_name in rl_names:
+        for m in welch_metrics:
+            welch_rows.append(welch_test(cells, m, rl_name, best_baseline))
+    welch_df = pd.DataFrame(welch_rows)
+    welch_df.to_csv(EVAL_DIR / "welch_vs_best_baseline.csv", index=False)
+
+    write_stats_tests_md(paired_df, welch_df, best_rl, best_baseline,
+                         EVAL_DIR / "stats_tests.md")
 
     answers = answer_research_questions(
         cells, tests, best_pair=(best_rl, best_baseline)
@@ -256,6 +361,8 @@ def main() -> None:
     print(f"\n-> {table_csv}")
     print(f"-> {table_md}")
     print(f"-> {EVAL_DIR / 'significance_tests.csv'}")
+    print(f"-> {EVAL_DIR / 'welch_vs_best_baseline.csv'}")
+    print(f"-> {EVAL_DIR / 'stats_tests.md'}")
     print(f"-> {EVAL_DIR / 'research_questions.json'}")
 
 
