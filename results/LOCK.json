@@ -1,13 +1,13 @@
 {
-  "locked_at": "2026-10-13T05:48:52+00:00",
+  "locked_at": "2026-10-18T19:15:42+00:00",
   "statement": "Data, models, configuration and design code are frozen. The held-out test split may now be read once, by evaluation/evaluate.py; no hyper-parameter, reward, geometry or selection-rule change is permitted afterwards.",
   "groups": {
     "data": 3,
-    "models": 30,
+    "models": 46,
     "config": 1,
-    "design": 22
+    "design": 24
   },
-  "n_files": 56,
+  "n_files": 74,
   "files": {
     "data/interactions.csv": {
       "group": "data",
@@ -26,17 +26,17 @@
     },
     "models/PPO_last_seed0.pt": {
       "group": "models",
-      "md5": "44979f6a09d4a9f719fb8206ea4de910",
+      "md5": "8bc580218cf569e049e7f5e9e6360d77",
       "bytes": 103087
     },
     "models/PPO_last_seed1.pt": {
       "group": "models",
-      "md5": "320a8fe77895afba784654f7d3b0d055",
+      "md5": "09ab98b2e00297965c9a77458ffaacf9",
       "bytes": 103087
     },
     "models/PPO_last_seed2.pt": {
       "group": "models",
-      "md5": "a4d617f5570ba714108de476b7a54544",
+      "md5": "f09c80de925175d7e48315117bc705ea",
       "bytes": 103087
     },
     "models/PPO_seed0.pt": {
@@ -69,6 +69,16 @@
       "md5": "dd161b42fac5cf0a36b7f889e12f45c5",
       "bytes": 404289
     },
+    "models/double_dqn_last_seed3.pt": {
+      "group": "models",
+      "md5": "52c8aeef19e69bfa7834c87dbb26db89",
+      "bytes": 404289
+    },
+    "models/double_dqn_last_seed4.pt": {
+      "group": "models",
+      "md5": "8a2e83adee73d830a2241a241453901e",
+      "bytes": 404289
+    },
     "models/double_dqn_seed0.pt": {
       "group": "models",
       "md5": "43ecc7cd15f1a0daebc4bba582ba8dc6",
@@ -82,6 +92,16 @@
     "models/double_dqn_seed2.pt": {
       "group": "models",
       "md5": "cde7bb36443f158a3580edd88e9e9976",
+      "bytes": 404109
+    },
+    "models/double_dqn_seed3.pt": {
+      "group": "models",
+      "md5": "2a5c4b059dfe7f0e9e2754ac31101dda",
+      "bytes": 404109
+    },
+    "models/double_dqn_seed4.pt": {
+      "group": "models",
+      "md5": "36c7a1f5eedb1472ab0245def38f0e50",
       "bytes": 404109
     },
     "models/dqn_last_seed0.pt": {
@@ -99,6 +119,16 @@
       "md5": "32f6903d6ca9d985439e255311cc7c28",
       "bytes": 404037
     },
+    "models/dqn_last_seed3.pt": {
+      "group": "models",
+      "md5": "1c5bddec224a023d1654ee97633de54d",
+      "bytes": 404037
+    },
+    "models/dqn_last_seed4.pt": {
+      "group": "models",
+      "md5": "a7a037800ef8f42b8d0284307ad46606",
+      "bytes": 404037
+    },
     "models/dqn_seed0.pt": {
       "group": "models",
       "md5": "491806e6e2c8de02d8d3cdd71d62ab89",
@@ -112,6 +142,16 @@
     "models/dqn_seed2.pt": {
       "group": "models",
       "md5": "6d3a609f93270df22a986874790deddc",
+      "bytes": 403857
+    },
+    "models/dqn_seed3.pt": {
+      "group": "models",
+      "md5": "1a229cb9ea8d6f5c09063141670ead4c",
+      "bytes": 403857
+    },
+    "models/dqn_seed4.pt": {
+      "group": "models",
+      "md5": "0707b392ddc85f8f9a4cc7b4b2d5d494",
       "bytes": 403857
     },
     "models/q_learning_last_seed0.npz": {
@@ -129,6 +169,16 @@
       "md5": "37e8e7815d0615ac435de09d2f1fe2d3",
       "bytes": 26653
     },
+    "models/q_learning_last_seed3.npz": {
+      "group": "models",
+      "md5": "544f1c24f042811e7b5516212745c4aa",
+      "bytes": 26318
+    },
+    "models/q_learning_last_seed4.npz": {
+      "group": "models",
+      "md5": "162ff4bd8e6f238fc3f2ca877427d557",
+      "bytes": 26473
+    },
     "models/q_learning_seed0.npz": {
       "group": "models",
       "md5": "f3f0f3a999b89ce6438603b3c180cdad",
@@ -143,6 +193,16 @@
       "group": "models",
       "md5": "932419907db8399cd7b8ff0c46cfb290",
       "bytes": 26602
+    },
+    "models/q_learning_seed3.npz": {
+      "group": "models",
+      "md5": "cc961fa44644d1e33080f0c8cec9ba8f",
+      "bytes": 25990
+    },
+    "models/q_learning_seed4.npz": {
+      "group": "models",
+      "md5": "f20de1ac6cc2136d99788382660c1c3c",
+      "bytes": 15755
     },
     "models/sarsa_last_seed0.npz": {
       "group": "models",
@@ -159,6 +219,16 @@
       "md5": "729b263a13c489207829a11cbc2fd383",
       "bytes": 27717
     },
+    "models/sarsa_last_seed3.npz": {
+      "group": "models",
+      "md5": "9afa01ed2801bbf5da48ec5c9c7d24f8",
+      "bytes": 27496
+    },
+    "models/sarsa_last_seed4.npz": {
+      "group": "models",
+      "md5": "a26840ddae51b51d520a8fafa72299cb",
+      "bytes": 27618
+    },
     "models/sarsa_seed0.npz": {
       "group": "models",
       "md5": "d36abbcf2fa4e3c4ba10ea20f473c5f4",
@@ -174,10 +244,20 @@
       "md5": "7b42d69463b6280c80b70ae71d2cb948",
       "bytes": 26874
     },
+    "models/sarsa_seed3.npz": {
+      "group": "models",
+      "md5": "84c9e385b26b205ea8b05ad11579013c",
+      "bytes": 24879
+    },
+    "models/sarsa_seed4.npz": {
+      "group": "models",
+      "md5": "222779e928a4638a7738161618483746",
+      "bytes": 18455
+    },
     "config.py": {
       "group": "config",
-      "md5": "5be26a10c706449bd653428dd396ee41",
-      "bytes": 5979
+      "md5": "838bff0d723ba098630f46dd87e304bc",
+      "bytes": 5985
     },
     "agents/__init__.py": {
       "group": "design",
@@ -196,8 +276,8 @@
     },
     "agents/dqn_agent.py": {
       "group": "design",
-      "md5": "1d9d3d4e721ae35a78f24a59f5bca863",
-      "bytes": 9057
+      "md5": "aa22f4642187b6780221f6584924ca60",
+      "bytes": 9135
     },
     "agents/ppo_agent.py": {
       "group": "design",
@@ -226,8 +306,8 @@
     },
     "environment/coding_env.py": {
       "group": "design",
-      "md5": "ee5f00c3b9775d73dde44325bbf79ef0",
-      "bytes": 15284
+      "md5": "a9926a9f080245a2208b4d000a965fb2",
+      "bytes": 15883
     },
     "environment/reward.py": {
       "group": "design",
@@ -236,8 +316,8 @@
     },
     "environment/simulator.py": {
       "group": "design",
-      "md5": "40be59cd29832e4cb9894e7c12d9d811",
-      "bytes": 12755
+      "md5": "2fff6c8272bfedeeb91bd3cfce7f7b61",
+      "bytes": 13917
     },
     "environment/state.py": {
       "group": "design",
@@ -249,10 +329,20 @@
       "md5": "d41d8cd98f00b204e9800998ecf8427e",
       "bytes": 0
     },
+    "training/ablation.py": {
+      "group": "design",
+      "md5": "0fa9adba59e7853908c9b2dd2df88595",
+      "bytes": 15793
+    },
     "training/common.py": {
       "group": "design",
       "md5": "c5e446cac850b5f205bd8a7a885d3181",
       "bytes": 1164
+    },
+    "training/hyperparam_sensitivity.py": {
+      "group": "design",
+      "md5": "44301606648cbd7f2212e8850ceef11b",
+      "bytes": 16024
     },
     "training/reward_sensitivity.py": {
       "group": "design",
@@ -286,8 +376,8 @@
     },
     "training/trainer.py": {
       "group": "design",
-      "md5": "ff2c8ecf1a176fc8dc277d3ba87a80d9",
-      "bytes": 9403
+      "md5": "fc5805176a7676959ca8188a4bc3f32a",
+      "bytes": 9760
     }
   }
 }
