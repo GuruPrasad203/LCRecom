@@ -44,8 +44,9 @@
 {% block scripts %}
 {% if charts %}
 <script src="{{ url_for('static', filename='chart.umd.min.js') }}"></script>
+<script type="application/json" id="training-curves-data">{{ charts | tojson }}</script>
 <script>
-const TRAINING_CURVES = {{ charts | tojson }};
+const TRAINING_CURVES = JSON.parse(document.getElementById("training-curves-data").textContent);
 const Y_AXIS_LABEL = "Episode Reward (100-episode moving average)";
 
 TRAINING_CURVES.forEach((curve) => {
