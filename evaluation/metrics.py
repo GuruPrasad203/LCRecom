@@ -24,6 +24,14 @@ unproductive_repeat_rate
                   here, because it is productive massed practice.
 unique_topics     number of distinct topics recommended in the session
 frustration_end   frustration level after the session (lower is better)
+prereq_violation_rate
+                  fraction of steps whose recommended topic had at least one
+                  prerequisite topic with mastery < 0.30 *at decision time*
+                  (mastery snapshot taken immediately before env.step; the
+                  prerequisite DAG lives in config.TOPIC_PREREQS).  Lower is
+                  better; it is purely diagnostic - the agents never observe
+                  the DAG, so a violation is not "cheating", just a
+                  pedagogically out-of-order recommendation.
 quit_not_applicable: sessions always run the full fixed horizon, so every
                      strategy is compared over the same number of problems
 """
@@ -58,6 +66,7 @@ class RunMetrics:
     initial_mastery: float
     final_mastery: float
     total_reward: float
+    prereq_violation_rate: float = 0.0
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -74,6 +83,7 @@ def compute_run_metrics(
     final_mastery: np.ndarray,
     episode_log: list[dict],
     total_reward: float,
+    prereq_violation_rate: float | None = None,
 ) -> RunMetrics:
     n = len(episode_log)
     successes = [bool(e["success"]) for e in episode_log]
@@ -116,6 +126,11 @@ def compute_run_metrics(
         initial_mastery=float(np.mean(initial_mastery)),
         final_mastery=float(np.mean(final_mastery)),
         total_reward=float(total_reward),
+        prereq_violation_rate=(
+            float(prereq_violation_rate)
+            if prereq_violation_rate is not None
+            else float(np.mean([bool(e.get("prereq_violated")) for e in episode_log])) if n else 0.0
+        ),
     )
 
 
@@ -133,6 +148,7 @@ SUMMARY_METRICS = [
     "unique_topics",
     "frustration_end",
     "total_reward",
+    "prereq_violation_rate",
 ]
 
 # metrics where higher is better / lower is better (for the report)
@@ -142,4 +158,5 @@ HIGHER_IS_BETTER = {
 LOWER_IS_BETTER = {
     "avg_hints", "mean_solve_time", "median_solve_time", "too_easy_rate",
     "too_hard_rate", "repetition_rate", "frustration_end",
+    "prereq_violation_rate",
 }

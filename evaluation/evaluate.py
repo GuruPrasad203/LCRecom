@@ -25,7 +25,15 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from config import EPISODE_LEN, EVAL_SEEDS, RESULTS_DIR, TOPICS, TRAIN_SEEDS  # noqa: E402
+from config import (  # noqa: E402
+    EPISODE_LEN,
+    EVAL_SEEDS,
+    RESULTS_DIR,
+    TOPICS,
+    TOPIC_PREREQS,
+    TOPIC_TO_INDEX,
+    TRAIN_SEEDS,
+)
 from data.generate_data import history_lookup, load_problems, load_students  # noqa: E402
 from environment.coding_env import CodingPracticeEnv  # noqa: E402
 from evaluation.metrics import RunMetrics, compute_run_metrics  # noqa: E402
@@ -59,7 +67,14 @@ def run_session(
     total_reward = 0.0
     while True:
         action = recommender.recommend(state)
+        # diagnostic: prerequisite status at *decision* time (mastery is
+        # only updated inside step(), so env.mastery is still pre-step here)
+        pre_mastery = env.mastery.copy()
         state, reward, terminated, truncated, sinfo = env.step(action)
+        topic_idx = int(sinfo["topic_idx"])
+        prereqs = TOPIC_PREREQS.get(TOPICS[topic_idx], [])
+        violated = any(pre_mastery[TOPIC_TO_INDEX[p]] < 0.30 for p in prereqs)
+        sinfo["prereq_violated"] = violated
         total_reward += reward
         log.append(sinfo)
         if terminated or truncated:

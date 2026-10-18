@@ -42,7 +42,7 @@ TRAINING_DIR.mkdir(parents=True, exist_ok=True)
 EPISODE_COLUMNS = [
     "episode", "reward", "skill_gain", "completions", "hints", "solve_time",
     "calibration", "repeat_rate", "frustration", "avg_mastery", "epsilon",
-    "mastery_gain",
+    "mastery_gain", "loss", "max_q",
 ]
 
 
@@ -111,6 +111,10 @@ def run_episode(
         "avg_mastery": float(env.mastery.mean()),
         "epsilon": float(getattr(agent, "epsilon", 0.0)),
         "mastery_gain": float(env.mastery.mean() - init_mastery.mean()),
+        # instrumentation only - read attributes the agent already maintains;
+        # never feeds back into training (NaN for tabular agents).
+        "loss": float(getattr(agent, "last_loss", float("nan"))),
+        "max_q": float(getattr(agent, "last_max_q", float("nan"))),
     }
 
 
@@ -233,6 +237,7 @@ def train(
             "final_greedy_val_reward": round(final_score, 4),
             "selection_metric": "greedy rollout reward on 4 TRAINING students",
             "val_students": [st.student_id for st in val_students],
+            "training_time_sec": round(time.time() - t0, 2),
         }
         (TRAINING_DIR / f"{name}{extra_suffix}_seed{seed}.json").write_text(
             __import__("json").dumps(meta, indent=2)

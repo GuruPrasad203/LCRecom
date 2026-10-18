@@ -102,7 +102,7 @@ N_ERROR_WINDOW = 12       # window used for the error-type distribution
 # --------------------------------------------------------------------------
 GLOBAL_SEED = 42
 DATA_SEED = 42
-TRAIN_SEEDS: tuple[int, ...] = (0, 1, 2)
+TRAIN_SEEDS: tuple[int, ...] = (0, 1, 2, 3, 4)
 EVAL_SEEDS: tuple[int, ...] = (100, 200, 300)
 
 # --------------------------------------------------------------------------
@@ -141,7 +141,7 @@ class DQNConfig:
 # Experiment geometry
 # --------------------------------------------------------------------------
 TRAIN_EPISODES = 2000       # episodes per RL run
-N_TRAIN_SEEDS = 3           # independent training seeds (mean ± std)
+N_TRAIN_SEEDS = 5           # independent training seeds (mean ± std)
 N_EVAL_STUDENTS = 10        # held-out test students
 SENSITIVITY_EPISODES = 600  # episodes for the reward-sensitivity study
 

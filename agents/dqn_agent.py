@@ -121,6 +121,7 @@ class DQNAgent(Recommender):
         self.steps = 0
         self.updates = 0
         self.last_loss = 0.0
+        self.last_max_q = 0.0
 
     # ------------------------------------------------------------ policy
     def act(self, state: np.ndarray, explore: bool = True) -> int:
@@ -188,6 +189,7 @@ class DQNAgent(Recommender):
 
         self.updates += 1
         self.last_loss = float(loss.item())
+        self.last_max_q = float(q.max().item())
         return self.last_loss
 
     def update_target(self) -> None:
