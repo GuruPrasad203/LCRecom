@@ -1,0 +1,13 @@
+topic,prerequisites
+Arrays,—
+Strings,Arrays
+Stack,Arrays
+Queue,Arrays
+Linked Lists,Arrays
+Sorting,Arrays
+Binary Search,"Arrays, Sorting"
+Recursion,Arrays
+Trees,Recursion
+Graphs,"Stack, Queue, Trees"
+Dynamic Programming,Recursion
+Greedy,Sorting

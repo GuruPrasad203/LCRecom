@@ -1,0 +1,39 @@
+# metrics_main — all main metrics, test split, 30 matched cells
+
+`mean ± sd` over 30 matched cells (10 held-out students x 3 eval seeds); RL strategies first averaged over their 5 training seeds inside each cell. Raw evidence: `evaluation/per_run.csv` (690 rows) → `evaluation/cell_means.csv` (210 rows) → `evaluation/summary_by_strategy.csv`.
+
+| Strategy | Type | n (cells) | Skill gain | Completion | Hints | Time | Calibration | Unprod. repeat | Frustration | Reward | Prereq viol. |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Random | Baseline | 30 | 0.0130 ± 0.0065 | 0.7617 ± 0.1369 | 0.2550 ± 0.3793 | 54.0337 ± 16.3947 | 0.6267 ± 0.1794 | 0.0333 ± 0.0488 | 0.1842 ± 0.2810 | 7.9548 ± 12.1701 | 0.0850 ± 0.1240 |
+| Difficulty-Based | Baseline | 30 | 0.0145 ± 0.0084 | 0.6950 ± 0.1028 | 0.3650 ± 0.4177 | 74.7393 ± 16.5361 | 0.6967 ± 0.1479 | 0.0000 ± 0.0000 | 0.1984 ± 0.2323 | 8.2985 ± 14.4336 | 0.1050 ± 0.1275 |
+| Prerequisite-Based | Baseline | 30 | 0.0171 ± 0.0090 | 0.7967 ± 0.0955 | 0.0617 ± 0.1064 | 39.9506 ± 10.5104 | 0.9633 ± 0.0973 | 0.0035 ± 0.0134 | 0.0245 ± 0.0599 | 11.3514 ± 16.1414 | 0.0000 ± 0.0000 |
+| SARSA | On-policy RL | 30 | 0.0142 ± 0.0070 | 0.7923 ± 0.0907 | 0.0990 ± 0.1862 | 44.6798 ± 5.1382 | 0.9047 ± 0.0801 | 0.0081 ± 0.0119 | 0.0694 ± 0.0951 | 15.3460 ± 12.3208 | 0.0663 ± 0.0914 |
+| Q-Learning | Off-policy RL | 30 | 0.0137 ± 0.0065 | 0.7980 ± 0.0907 | 0.0567 ± 0.0994 | 44.2517 ± 7.4020 | 0.8997 ± 0.0667 | 0.0070 ± 0.0105 | 0.0495 ± 0.0925 | 14.8654 ± 11.5114 | 0.1043 ± 0.1172 |
+| DQN | Deep RL | 30 | 0.0128 ± 0.0058 | 0.7837 ± 0.0937 | 0.0747 ± 0.1154 | 46.8612 ± 6.3115 | 0.8797 ± 0.0967 | 0.0165 ± 0.0222 | 0.0583 ± 0.0686 | 4.2246 ± 8.4848 | 0.0923 ± 0.1324 |
+| Double DQN | Improved Deep RL | 30 | 0.0138 ± 0.0065 | 0.7700 ± 0.1132 | 0.1093 ± 0.1629 | 50.2700 ± 7.2278 | 0.8637 ± 0.1361 | 0.0277 ± 0.0594 | 0.0808 ± 0.1132 | 10.7981 ± 10.7807 | 0.0790 ± 0.0857 |
+
+## Metric definitions (see `evaluation/metrics.py` for the full specification)
+
+* **skill_gain** — mean over the 12 topics of (final − initial) mastery in one session (mastery is on [0,1]).
+* **completion_rate** — solved problems / recommended problems.
+* **avg_hints** — hints requested per recommendation (lower better).
+* **mean_solve_time** — average minutes per attempt.
+* **calibration** — share of recommendations inside the 'appropriate' challenge band (higher better).
+* **unproductive_repeat_rate** — steps that repeated the previous topic *while* the recommendation was not well calibrated (the 'unnecessarily repeated topic' metric).
+* **frustration_end** — frustration level after the session (lower better).
+* **total_reward** — sum of the (clipped) shaped reward over the 20-step episode.
+* **prereq_violation_rate** — fraction of steps whose recommended topic had **at least one prerequisite topic with mastery < 0.30 at decision time** (mastery snapshot taken immediately before `env.step`; DAG in `config.TOPIC_PREREQS`). Lower is better. Agents never observe the DAG, so this is a *diagnostic* metric; the Prerequisite-Based baseline scores exactly 0.0000 by construction (validity gate).
+
+## Convergence & cost (measured post-hoc; RL strategies only)
+
+* **Episodes to converge** — first episode whose 50-episode moving-average training reward reaches 95% of its final-window mean (`training/<agent>_seed<k>.csv`).
+* **Training time** — wall-clock seconds of the train() call as recorded in `training/<agent>_seed<k>.json` (`training_time_sec`) on the host described in `system_info.md`; readout/evaluation time is excluded.
+
+| Strategy | Episodes to converge (mean) | ± sd | Training time s (mean) | ± sd |
+|---|---|---|---|---|
+| SARSA | 870 | 202.3 | 22.4 | 0.2 |
+| Q-Learning | 915 | 156.0 | 22.5 | 0.1 |
+| DQN | 518 | 826.8 | 48.0 | 2.9 |
+| Double DQN | 857 | 679.4 | 48.4 | 3.9 |
+
+Baselines are deterministic single-model strategies — they have no training run, hence no convergence or training-time value.
