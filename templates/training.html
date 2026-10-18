@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Training Curves{% endblock %}
+{% block content %}
+<h1 class="mt-4">Training Curves</h1>
+<p class="lead">Learning curves across training seeds for each strategy.</p>
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <form method="get" class="d-flex mb-3">
+            <select name="strategy" class="form-select mb-2"
+                    onchange="this.form.submit()">
+                <option value="" {% if not strategy %}selected{% endif %}>All Strategies</option>
+                {% for s in ["dqn", "double_dqn", "sarsa", "q_learning"] %}
+                <option value="{{ s }}" {% if strategy == s %}selected{% endif %}>
+                    {{ STRATEGY_LABELS.get(s, s) }}
+                </option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+</div>
+
+{% if charts %}
+{% for chart in charts %}
+<div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>{{ chart.label }}</span>
+        <small class="text-muted">
+            {{ chart.n_episodes }} episodes &times; {{ chart.n_seeds }} seed{{ "s" if chart.n_seeds != 1 }}
+        </small>
+    </div>
+    <div class="card-body">
+        <canvas id="curve-{{ chart.id }}" width="900" height="400"></canvas>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="alert alert-info">
+    No training data found. Ensure training CSVs exist in <code>results/training/</code>.
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if charts %}
+<script src="{{ url_for('static', filename='chart.umd.min.js') }}"></script>
+<script>
+const TRAINING_CURVES = {{ charts | tojson }};
+const Y_AXIS_LABEL = "Episode Reward (100-episode moving average)";
+
+TRAINING_CURVES.forEach((curve) => {
+    const canvas = document.getElementById("curve-" + curve.id);
+    if (!canvas) return;
+    new Chart(canvas.getContext("2d"), {
+        type: "line",
+        data: {
+            labels: curve.episodes,
+            datasets: [
+                {
+                    label: curve.label,
+                    data: curve.mean,
+                    borderColor: curve.color,
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    tension: 0.1,
+                    fill: false
+                },
+                {
+                    label: "sd_low",
+                    data: curve.lower,
+                    borderColor: "transparent",
+                    pointRadius: 0,
+                    tension: 0.1,
+                    fill: false
+                },
+                {
+                    label: "sd_high",
+                    data: curve.upper,
+                    borderColor: "transparent",
+                    backgroundColor: curve.band,
+                    pointRadius: 0,
+                    tension: 0.1,
+                    fill: "-1"
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            interaction: { mode: "index", intersect: false },
+            scales: {
+                x: { title: { display: true, text: "Episode" } },
+                y: { title: { display: true, text: Y_AXIS_LABEL } }
+            },
+            plugins: {
+                legend: {
+                    position: "bottom",
+                    labels: { filter: (item) => item.datasetIndex === 0 }
+                },
+                tooltip: { filter: (item) => item.datasetIndex === 0 }
+            }
+        }
+    });
+});
+</script>
+{% endif %}
+{% endblock %}

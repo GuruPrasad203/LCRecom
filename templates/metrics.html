@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block title %}Evaluation Metrics{% endblock %}
+{% block content %}
+<h1 class="mt-4">Evaluation Metrics</h1>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form method="get" class="d-flex">
+            <input type="hidden" name="tab" value="{{ with_tab }}">
+            <select name="strategy" class="form-select mb-2"
+                    onchange="this.form.submit()">
+                <option value="" {% if not strategy %}selected{% endif %}>All Strategies</option>
+                {% for s in strategy_order %}
+                <option value="{{ s }}" {% if strategy == s %}selected{% endif %}>
+                    {{ STRATEGY_LABELS.get(s, s) }}
+                </option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+    <div class="col-md-6 text-end">
+        <a href="{{ url_for('metrics') }}" class="btn btn-link text-secondary">
+            <i class="bi bi-arrow-clockwise me-1"></i> Reset
+        </a>
+    </div>
+</div>
+
+{% set tabs = ["summary", "cell_means", "per_run"] %}
+{% set tab_names = ["Summary", "Cell Means", "Per-Run"] %}
+
+<ul class="nav nav-tabs" id="metricsTabs" role="tablist">
+    {% for i, (t, n) in enumerate(zip(tabs, tab_names)) %}
+    <li class="nav-item{% if with_tab == t %} active{% endif %}">
+                id="{{ t }}Tab"
+                data-bs-toggle="tab"
+                data-bs-target="#{{ t }}"
+                type="button"
+                role="tab"
+                aria-controls="{{ t }}"
+                aria-selected="{% if with_tab == t %}true{% else %}false{% endif %}">
+            {{ n }}
+        </button>
+    </li>
+    {% endfor %}
+</ul>
+
+<div class="tab-content" id="metricsTabContent">
+    <!-- Summary Tab -->
+    {% if with_tab == "summary" %}
+    <div class="tab-pane fade show active" id="summary" role="tabpanel">
+        <h5>Summary by Strategy</h5>
+        <div class="table-responsive">
+            <table class="table table-striped small">
+                <thead>
+                    <tr>
+                        <th>Strategy</th>
+                        <th>Mean Skill Gain</th>
+                        <th>Total Reward Mean</th>
+                        <th>Completion Rate</th>
+                        <th>Calibration</th>
+                        <th>Frustration End</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for _, row in data["summary"].iterrows() %}
+                <tr>
+                    <td>{{ STRATEGY_LABELS.get(row.strategy, row.strategy) }}</td>
+                    <td>{{ "%.4f"|format(row.skill_gain_mean) }}</td>
+                    <td>{{ "%.2f"|format(row.total_reward_mean) }}</td>
+                    <td>{{ "%.2f"|format(row.completion_rate_mean) }}</td>
+                    <td>{{ "%.2f"|format(row.calibration_mean) }}</td>
+                    <td>{{ "%.2f"|format(row.frustration_end_mean) }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Cell Means Tab -->
+    {% if with_tab == "cell_means" %}
+    <div class="tab-pane fade" id="cell_means" role="tabpanel">
+        <h5>Cell Means (30 held-out cells)</h5>
+        <div class="table-responsive">
+            <table class="table table-striped small">
+                <thead>
+                    <tr>
+                        <th>Strategy</th>
+                        <th>Skill Gain Mean</th>
+                        <th>Skill Gain Std</th>
+                        <th>Total Reward Mean</th>
+                        <th>Total Reward Std</th>
+                        <th>Completion Rate</th>
+                        <th>Calibration</th>
+                        <th>Frustration End</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for _, row in data["cell_means"].iterrows() %}
+                <tr>
+                    <td>{{ STRATEGY_LABELS.get(row.strategy, row.strategy) }}</td>
+                    <td>{{ "%.4f"|format(row.skill_gain) }}</td>
+                    <td>{{ "%.4f"|format(row.skill_gain_std) }}</td>
+                    <td>{{ "%.2f"|format(row.total_reward) }}</td>
+                    <td>{{ "%.2f"|format(row.total_reward_std) }}</td>
+                    <td>{{ "%.2f"|format(row.completion_rate) }}</td>
+                    <td>{{ "%.2f"|format(row.calibration) }}</td>
+                    <td>{{ "%.2f"|format(row.frustration_end) }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Per-Run Tab -->
+    {% if with_tab == "per_run" %}
+    <div class="tab-pane fade" id="per_run" role="tabpanel">
+        <h5>Per-Run Metrics</h5>
+        <p>Select a strategy to filter the per-run data below.</p>
+        <div class="table-responsive">
+            <table class="table table-striped small">
+                <thead>
+                    <tr>
+                        <th>Run</th>
+                        <th>Student</th>
+                        <th>Strategy</th>
+                        <th>Skill Gain</th>
+                        <th>Total Reward</th>
+                        <th>Completion Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for _, row in data["per_run"].head(20).iterrows() %}
+                <tr>
+                    <td>{{ loop.index0 }}</td>
+                    <td>{{ row.student_id if hasattr(row, 'student_id') else '' }}</td>
+                    <td>{{ STRATEGY_LABELS.get(row.strategy, row.strategy) }}</td>
+                    <td>{{ "%.4f"|format(row.skill_gain) }}</td>
+                    <td>{{ "%.2f"|format(row.total_reward) }}</td>
+                    <td>{{ "%.2f"|format(row.completion_rate) }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <small>Showing first 20 of {{ data["per_run"].shape[0] }} runs.</small>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

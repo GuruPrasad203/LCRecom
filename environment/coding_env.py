@@ -32,10 +32,12 @@ from environment.action_space import ACTION_LABELS, action_to_topic_difficulty
 from environment.reward import RewardConfig, classify_challenge, compute_reward
 from environment.simulator import (
     StudentProfile,
+    build_profile_from_metrics,
     compute_skill_gain,
     simulate_attempt,
     update_frustration,
 )
+from leetcode_integration import build_student_from_leetcode
 from environment.state import (
     ERROR_SLICE,
     IDX_AVG_TIME,
@@ -176,7 +178,16 @@ class CodingPracticeEnv(gym.Env):
         super().reset(seed=seed)
         options = options or {}
 
-        if "student_id" in options:
+        leet_username = options.get("leetcode_username")
+        if "student" in options:
+            # Pre-built StudentProfile (e.g. imported from LeetCode) — avoids
+            # refetching the profile just to seed the environment.
+            self.student = options["student"]
+        elif leet_username:
+            from leetcode_integration import build_student_from_leetcode
+            prof, _mapped = build_student_from_leetcode(leet_username, split=self.mode)
+            self.student = prof
+        elif "student_id" in options:
             self.student = next(
                 s for s in self.students if s.student_id == options["student_id"]
             )

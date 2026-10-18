@@ -1,0 +1,65 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="mb-3">Figures</h1>
+        <p class="text-secondary">The ten report figures from the evaluation</p>
+    </div>
+</div>
+
+<!-- Figure Grid -->
+<div class="row g-4">
+    {% for code in codes %}
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <div class="figure-code text-center mb-3">
+                    <span class="display-6 fw-bold">{{ code }}</span>
+                </div>
+                <h6 class="card-title small">Figure {{ code }}</h6>
+                <p class="card-text text-secondary small">Figure {{ code }}</p>
+            </div>
+            <div class="card-footer bg-transparent border-top">
+                <a href="{{ url_for('figure_dashboard', code=code) }}" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- No figures message -->
+{% if not codes %}
+<div class="col-12 text-center py-5">
+    <div class="placeholder-card">
+        <i class="bi bi-file-image me-2"></i>
+        <span>No figures found</span>
+    </div>
+    <p class="mt-3 text-secondary">Run <code>visualization/plots.py</code> to generate the 10 report figures.</p>
+</div>
+{% endif %}
+
+<!-- Figure navigation info -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <p class="text-muted small">
+                    Figures 01-10 correspond to the report sections:
+                </p>
+                <ul class="list-unstyled small">
+                    <li><strong>01:</strong> Learning Curves</li>
+                    <li><strong>02:</strong> Skill Gain Bars</li>
+                    <li><strong>03:</strong> Reward Bars</li>
+                    <li><strong>04:</strong> 2x2 Metrics Panel</li>
+                    <li><strong>05:</strong> Skill Gain Boxplots</li>
+                    <li><strong>06:</strong> Reward Sensitivity</li>
+                    <li><strong>07:</strong> DQN vs Q-Learning Heatmaps</li>
+                    <li><strong>08:</strong> Calibration vs Frustration</li>
+                    <li><strong>09:</strong> Significance Heatmap</li>
+                    <li><strong>10:</strong> Per-Topic Mastery Gain</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

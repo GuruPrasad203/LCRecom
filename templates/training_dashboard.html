@@ -1,0 +1,63 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="mb-3">Training Curves</h1>
+        <p class="text-secondary">Learning curves across 3 training seeds per strategy</p>
+    </div>
+</div>
+
+<!-- Strategy Selector -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label small mb-1">Strategy</label>
+                <select name="strategy" class="form-select form-select-sm">
+                    <option value="">All Strategies</option>
+                    {% for s in ["dqn", "double_dqn", "sarsa", "q_learning"] %}
+                    <option value="{{ s }}" {% if strategy == s %}selected{% endif %}>
+                        {{ STRATEGY_LABELS.get(s, s) }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary btn-sm w-100">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Training Curves Charts -->
+<div class="row g-4">
+    {% if curve_stats %}
+    {% for name, stats in curve_stats.items() %}
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">{{ STRATEGY_LABELS.get(name, name) }}</h5>
+                <small class="text-secondary">{{ stats.episodes }} episodes × {{ stats.seeds }} seeds</small>
+            </div>
+            <div class="card-body">
+                <div class="chart-placeholder">
+                    <span>Learning Curve: {{ STRATEGY_LABELS.get(name, name) }}</span>
+                </div>
+                <small class="text-muted d-block mt-2">
+                    Mean Reward: {{ "%.2f"|format(stats.mean_reward) }} ± {{ "%.2f"|format(stats.std_reward) }}
+                </small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="col-12 text-center py-5">
+        <div class="placeholder-card">
+            <i class="bi bi-graph-down me-2"></i>
+            <span>No training data</span>
+        </div>
+        <p class="mt-3 text-secondary">Ensure training CSVs exist in <code>results/training/</code>.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

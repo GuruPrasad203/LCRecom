@@ -1,0 +1,293 @@
+{
+  "locked_at": "2026-10-13T05:48:52+00:00",
+  "statement": "Data, models, configuration and design code are frozen. The held-out test split may now be read once, by evaluation/evaluate.py; no hyper-parameter, reward, geometry or selection-rule change is permitted afterwards.",
+  "groups": {
+    "data": 3,
+    "models": 30,
+    "config": 1,
+    "design": 22
+  },
+  "n_files": 56,
+  "files": {
+    "data/interactions.csv": {
+      "group": "data",
+      "md5": "01d4782e7feb041a4da84f149489d507",
+      "bytes": 82089
+    },
+    "data/problems.csv": {
+      "group": "data",
+      "md5": "14777054800d262853d9bf7c9a4c4600",
+      "bytes": 8907
+    },
+    "data/students.csv": {
+      "group": "data",
+      "md5": "9b4ec484da71d9e910815507dbb50d01",
+      "bytes": 5615
+    },
+    "models/PPO_last_seed0.pt": {
+      "group": "models",
+      "md5": "44979f6a09d4a9f719fb8206ea4de910",
+      "bytes": 103087
+    },
+    "models/PPO_last_seed1.pt": {
+      "group": "models",
+      "md5": "320a8fe77895afba784654f7d3b0d055",
+      "bytes": 103087
+    },
+    "models/PPO_last_seed2.pt": {
+      "group": "models",
+      "md5": "a4d617f5570ba714108de476b7a54544",
+      "bytes": 103087
+    },
+    "models/PPO_seed0.pt": {
+      "group": "models",
+      "md5": "5b51d5421946356cfcd5453e4efb8bef",
+      "bytes": 103017
+    },
+    "models/PPO_seed1.pt": {
+      "group": "models",
+      "md5": "bed50abe67cc012ef1561babad355e04",
+      "bytes": 103017
+    },
+    "models/PPO_seed2.pt": {
+      "group": "models",
+      "md5": "97fcb586dfc4dbd70fe13011baff22ec",
+      "bytes": 103017
+    },
+    "models/double_dqn_last_seed0.pt": {
+      "group": "models",
+      "md5": "91b927b12e7d1dab763b55e03f58bb55",
+      "bytes": 404289
+    },
+    "models/double_dqn_last_seed1.pt": {
+      "group": "models",
+      "md5": "6f69a07ce0a8af3416062c0e401a6c9f",
+      "bytes": 404289
+    },
+    "models/double_dqn_last_seed2.pt": {
+      "group": "models",
+      "md5": "dd161b42fac5cf0a36b7f889e12f45c5",
+      "bytes": 404289
+    },
+    "models/double_dqn_seed0.pt": {
+      "group": "models",
+      "md5": "43ecc7cd15f1a0daebc4bba582ba8dc6",
+      "bytes": 404109
+    },
+    "models/double_dqn_seed1.pt": {
+      "group": "models",
+      "md5": "ce0747e47199d3337a1f9805f0059da2",
+      "bytes": 404109
+    },
+    "models/double_dqn_seed2.pt": {
+      "group": "models",
+      "md5": "cde7bb36443f158a3580edd88e9e9976",
+      "bytes": 404109
+    },
+    "models/dqn_last_seed0.pt": {
+      "group": "models",
+      "md5": "337aa3d43a43b363522eedbf5be391f2",
+      "bytes": 404037
+    },
+    "models/dqn_last_seed1.pt": {
+      "group": "models",
+      "md5": "856f59981bbb6ac90c4dcc6c3daca2c8",
+      "bytes": 404037
+    },
+    "models/dqn_last_seed2.pt": {
+      "group": "models",
+      "md5": "32f6903d6ca9d985439e255311cc7c28",
+      "bytes": 404037
+    },
+    "models/dqn_seed0.pt": {
+      "group": "models",
+      "md5": "491806e6e2c8de02d8d3cdd71d62ab89",
+      "bytes": 403857
+    },
+    "models/dqn_seed1.pt": {
+      "group": "models",
+      "md5": "8fe1086bf1ee0894578edc919b2a587e",
+      "bytes": 403857
+    },
+    "models/dqn_seed2.pt": {
+      "group": "models",
+      "md5": "6d3a609f93270df22a986874790deddc",
+      "bytes": 403857
+    },
+    "models/q_learning_last_seed0.npz": {
+      "group": "models",
+      "md5": "41b762b8186d06e485ee470f6f57b598",
+      "bytes": 26462
+    },
+    "models/q_learning_last_seed1.npz": {
+      "group": "models",
+      "md5": "a1d1dd2f377e07fe756c808facea5c59",
+      "bytes": 26864
+    },
+    "models/q_learning_last_seed2.npz": {
+      "group": "models",
+      "md5": "37e8e7815d0615ac435de09d2f1fe2d3",
+      "bytes": 26653
+    },
+    "models/q_learning_seed0.npz": {
+      "group": "models",
+      "md5": "f3f0f3a999b89ce6438603b3c180cdad",
+      "bytes": 26136
+    },
+    "models/q_learning_seed1.npz": {
+      "group": "models",
+      "md5": "ffc3c0af4a0b1b5c87dff9cfc16fb34d",
+      "bytes": 26548
+    },
+    "models/q_learning_seed2.npz": {
+      "group": "models",
+      "md5": "932419907db8399cd7b8ff0c46cfb290",
+      "bytes": 26602
+    },
+    "models/sarsa_last_seed0.npz": {
+      "group": "models",
+      "md5": "d4c87535da35e8117a216bdf9092fd28",
+      "bytes": 27224
+    },
+    "models/sarsa_last_seed1.npz": {
+      "group": "models",
+      "md5": "007f4fdc64903ec118443f8ca38e3bf4",
+      "bytes": 27460
+    },
+    "models/sarsa_last_seed2.npz": {
+      "group": "models",
+      "md5": "729b263a13c489207829a11cbc2fd383",
+      "bytes": 27717
+    },
+    "models/sarsa_seed0.npz": {
+      "group": "models",
+      "md5": "d36abbcf2fa4e3c4ba10ea20f473c5f4",
+      "bytes": 11504
+    },
+    "models/sarsa_seed1.npz": {
+      "group": "models",
+      "md5": "fdc1ba08d8e3eaa6c5177e671334d826",
+      "bytes": 11354
+    },
+    "models/sarsa_seed2.npz": {
+      "group": "models",
+      "md5": "7b42d69463b6280c80b70ae71d2cb948",
+      "bytes": 26874
+    },
+    "config.py": {
+      "group": "config",
+      "md5": "5be26a10c706449bd653428dd396ee41",
+      "bytes": 5979
+    },
+    "agents/__init__.py": {
+      "group": "design",
+      "md5": "13c1cfcbc4b72060e1b5c7594eb13e01",
+      "bytes": 364
+    },
+    "agents/base_tabular.py": {
+      "group": "design",
+      "md5": "b6173f3f577135a37454fa1e7e5f9da5",
+      "bytes": 4559
+    },
+    "agents/double_dqn_agent.py": {
+      "group": "design",
+      "md5": "8bc79dcc2dacd2f406313277abe4d3da",
+      "bytes": 1262
+    },
+    "agents/dqn_agent.py": {
+      "group": "design",
+      "md5": "1d9d3d4e721ae35a78f24a59f5bca863",
+      "bytes": 9057
+    },
+    "agents/ppo_agent.py": {
+      "group": "design",
+      "md5": "2f8217983c9f40e96520a17f7aacc990",
+      "bytes": 16646
+    },
+    "agents/q_learning_agent.py": {
+      "group": "design",
+      "md5": "55e95c6cb4b9135debd06c12887eac45",
+      "bytes": 1295
+    },
+    "agents/sarsa_agent.py": {
+      "group": "design",
+      "md5": "f778969bdc85ac7056a0534274c05be7",
+      "bytes": 1571
+    },
+    "environment/__init__.py": {
+      "group": "design",
+      "md5": "d41d8cd98f00b204e9800998ecf8427e",
+      "bytes": 0
+    },
+    "environment/action_space.py": {
+      "group": "design",
+      "md5": "9711545255d023f87d8f6899695457af",
+      "bytes": 1850
+    },
+    "environment/coding_env.py": {
+      "group": "design",
+      "md5": "ee5f00c3b9775d73dde44325bbf79ef0",
+      "bytes": 15284
+    },
+    "environment/reward.py": {
+      "group": "design",
+      "md5": "79a565a22684a0c7f2cc8c7f89baed81",
+      "bytes": 4683
+    },
+    "environment/simulator.py": {
+      "group": "design",
+      "md5": "40be59cd29832e4cb9894e7c12d9d811",
+      "bytes": 12755
+    },
+    "environment/state.py": {
+      "group": "design",
+      "md5": "955a8f9756b3539fb01fa7b5e2f861c0",
+      "bytes": 5991
+    },
+    "training/__init__.py": {
+      "group": "design",
+      "md5": "d41d8cd98f00b204e9800998ecf8427e",
+      "bytes": 0
+    },
+    "training/common.py": {
+      "group": "design",
+      "md5": "c5e446cac850b5f205bd8a7a885d3181",
+      "bytes": 1164
+    },
+    "training/reward_sensitivity.py": {
+      "group": "design",
+      "md5": "e38235e5fdf8f21e8cfcc2481c341ef1",
+      "bytes": 13819
+    },
+    "training/train_double_dqn.py": {
+      "group": "design",
+      "md5": "7bee0cd691bdcce6a56071dfc364c2d1",
+      "bytes": 1096
+    },
+    "training/train_dqn.py": {
+      "group": "design",
+      "md5": "a827127698f5ca294cc779363344422e",
+      "bytes": 1062
+    },
+    "training/train_ppo.py": {
+      "group": "design",
+      "md5": "f6f864272fee547461f73edfc6439eb5",
+      "bytes": 982
+    },
+    "training/train_qlearning.py": {
+      "group": "design",
+      "md5": "6e6c4429bcf934cc3dbd68b98b200740",
+      "bytes": 1092
+    },
+    "training/train_sarsa.py": {
+      "group": "design",
+      "md5": "3417feb08b1b0fbac68348f82456111b",
+      "bytes": 1073
+    },
+    "training/trainer.py": {
+      "group": "design",
+      "md5": "ff2c8ecf1a176fc8dc277d3ba87a80d9",
+      "bytes": 9403
+    }
+  }
+}

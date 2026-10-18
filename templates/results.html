@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Evaluation Results{% endblock %}
+{% block content %}
+<h1 class="mt-4">Evaluation Results — Structured Metrics</h1>
+<p class="lead">
+    Summary of all 7 RL strategies and 3 baselines across 30 matched cells each
+    (10 held-out students × 3 eval seeds). Data locked after Phase 3 (LOCK.json).
+</p>
+
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+{% if rows %}
+<h4>Main Evaluation Table</h4>
+<div class="table-responsive">
+    <table class="table table-striped small">
+        <thead>
+        <tr>
+            <th>Strategy</th>
+            <th>Type</th>
+            <th>Skill Gain</th>
+            <th>Completion</th>
+            <th>Hints</th>
+            <th>Time (min)</th>
+            <th>Calibration</th>
+            <th>Frustration</th>
+            <th>Reward</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row.strategy }}</td>
+            <td>{{ row.type }}</td>
+<td>{{ row.skill_gain }}</td>
+            <td>{{ row.type }}</td>
+            <td>{{ row.completion }}</td>
+            <td>{{ row.hints }}</td>
+            <td>{{ row.time }}</td>
+            <td>{{ row.calibration }}</td>
+            <td>{{ row.frustration }}</td>
+            <td>{{ row.reward }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<hr>
+
+<h4>Research Questions (from REPORT.md §4.3)</h4>
+{% for rq in rqs %}
+<div class="card mb-3">
+    <div class="card-header">
+        <strong>{{ rq.rq }}</strong>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Question</h5>
+        <p class="card-text">{{ rq.question }}</h5>
+        <h5 class="card-title">Answer</h5>
+        <p class="card-text">{{ rq.answer }}</p>
+    </div>
+</div>
+{% endfor %}
+
+<hr>
+
+<h4>Rankings</h4>
+<p><strong>By skill gain:</strong> Prerequisite-Based (0.0171) > SARSA (0.0145) = Difficulty-Based (0.0145) > Q-Learning (0.0139) > Double DQN = DQN (0.0135) > Random (0.0130)</p>
+<p><strong>By reward:</strong> SARSA (15.29) > Q-Learning (15.19) > Double DQN (12.06) > Prerequisite-Based (11.35) > Difficulty-Based (8.30) > Random (7.95) > DQN (2.37)</p>
+
+<hr>
+
+<h4>Key Takeaways</h4>
+<ol>
+    <li><strong>No RL agent beats the best baseline (Prerequisite-Based) on skill gain.</strong> SARSA matches the difficulty baseline and beats Random, but the prerequisite topic ordering is the strongest method on the primary metric (skill gain).</li>
+    <li><strong>RL wins the reward metric, not the learning metric.</strong> SARSA/Q-Learning reach ≈15.2 total reward vs 11.4 for the best baseline, mainly through lower time cost and lower frustration.</li>
+    <li><strong>Deep RL is unstable.</strong> After protocol-compliant retrain, DQN still produces one non-positive training readout per 3 seeds and 37/90 held-out episodes with negative total reward. Double DQN recovers the reward (12.06) but not the skill-gain ranking (0.0135).</li>
+    <li><strong>Reward is not over-fitted.</strong> Five plausible re-weightings change nothing significant (all p > 0.28), so the reward shape is not driving the ranking.</li>
+</ol>
+<hr>
+
+<p><a href="/">← Home</a> | <a href="/report">Report Figures</a> | <a href="/metrics">Evaluation Metrics</a> | <a href="/training">Training Curves</a> | <a href="/leetcode">LeetCode Integration</a></p>
+{% endif %}
+{% endblock %}

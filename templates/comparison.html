@@ -1,0 +1,125 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="mb-3">Strategy Comparison</h1>
+        <p class="text-secondary">Compare all seven recommendation strategies</p>
+    </div>
+</div>
+
+<!-- Filter Chips -->
+<div class="row g-2 mb-4">
+    <div class="col-12">
+        <div class="d-flex flex-wrap gap-2">
+            <button class="filter-chip {% if strategy == '' or strategy is sameas '' %}active{% endif %}" data-filter="all">
+                All
+            </button>
+            {% for s in strategy_order %}
+            <button class="filter-chip {% if strategy == s %}active{% endif %}" data-filter="{{ s }}">{{ STRATEGY_LABELS.get(s, s) }}</button>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Comparison Tables -->
+<div class="row g-4">
+    <div class="col-lg-8 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Metrics by Strategy</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 small">
+                        <thead>
+                            <tr>
+                                <th>Strategy</th>
+                                <th>Type</th>
+                                <th>Skill Gain Mean</th>
+                                <th>Skill Gain Std</th>
+                                <th>Total Reward Mean</th>
+                                <th>Total Reward Std</th>
+                                <th>Completion Rate</th>
+                                <th>Calibration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for _, row in data["summary"].iterrows() %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2"
+                                              style="color: {{ STRATEGY_COLORS.get(STRATEGY_LABELS.get(row.strategy, '#64748b'), '#64748b') }};">
+                                            {{ STRATEGY_LABELS.get(row.strategy, row.strategy) }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge badge-custom {% if STRATEGY_TYPE.get(row.strategy) == 'Baseline' %}bg-secondary{% else %}bg-primary{% endif %}">
+                                        {{ STRATEGY_TYPE.get(row.strategy, 'RL') }}
+                                    </span>
+                                </td>
+                                <td>{{ "%.4f"|format(row.skill_gain_mean) }}</td>
+                                <td>{{ "%.4f"|format(row.skill_gain_std) }}</td>
+                                <td>{{ "%.2f"|format(row.total_reward_mean) }}</td>
+                                <td>{{ "%.2f"|format(row.total_reward_std) }}</td>
+                                <td>{{ "%.2f"|format(row.completion_rate_mean) }}</td>
+                                <td>{{ "%.2f"|format(row.calibration_mean) }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Top Performers</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    {% set sorted_strats = data["summary"].sort_values("skill_gain_mean", ascending=False) %}
+                    {% for _, row in sorted_strats.head(5).iterrows() %}
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <span>
+                                {{ STRATEGY_LABELS.get(row.strategy, row.strategy) }}
+                            </span>
+                            <span class="text-primary"
+                                  style="font-weight: 600;"
+                                  >{{ "%.4f"|format(row.skill_gain_mean) }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Strategy Type Distribution -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Strategy Type Distribution</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    {% for s in strategy_order %}
+                    <div class="col-6 col-sm-4 mb-2">
+                        <div class="p-3 rounded" style="background: {{ STRATEGY_COLORS.get(STRATEGY_LABELS.get(s, '#64748b'), '#64748b') .1 }}>
+                            <div class="text-primary small fw-bold">{{ STRATEGY_LABELS.get(s, s) }}</div>
+                            <div class="text-secondary small">{{ STRATEGY_TYPE.get(s, 'RL') }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

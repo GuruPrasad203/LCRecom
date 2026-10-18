@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title %}LeetCode Integration{% endblock %}
+{% block content %}
+<h1 class="mt-4">LeetCode Student Integration</h1>
+<p class="lead">
+    Fetch a LeetCode user's public profile and map their solving history to
+    LCRecom student proficiency metrics (ability, learning rate, frustration,
+    per-topic mastery). The resulting student can be used with any RL strategy.
+</p>
+
+{% if error %}
+<div class="alert alert-danger">
+    {{ error }}
+</div>
+{% endif %}
+
+{% if form_submitted and selected_strategy and selected_student and student_profile %}
+<div class="alert alert-success mb-3">
+    Student initialized from LeetCode: <strong>{{ student_profile.name }} ({{ student_profile.student_id }})</strong><br>
+    Ability: {{ student_profile.ability }}, Learning Rate: {{ student_profile.learning_rate }}<br>
+    Frustration Sensitivity: {{ student_profile.frustration_sensitivity }}, Hint Inclination: {{ student_profile.hint_inclination }}<br>
+    Time Factor: {{ student_profile.time_factor }}<br>
+    <em>Per-topic mastery: {{ student_profile.mastery | join(", ") }}</em>
+</div>
+
+<h5>Recommended Next Problem</h5>
+{% if recommended_action %}
+<div class="card mb-3">
+    <div class="card-body">
+        <h6 class="card-title"> {{ recommended_action.reason }}</h6>
+        <p class="card-text">
+            <strong>Topic:</strong> {{ recommended_action.topic }} &
+            <strong>Difficulty:</strong> {{ recommended_action.diff_label }}
+            ({{ recommended_action.difficulty }})<br>
+            <small>This recommendation is based on your LeetCode solving history:
+            topics with fewer solved problems and your recent success rate.</small>
+        </p>
+            <a href="https://leetcode.com/problemset/all/?topicSlugs={{ recommended_action.lc_tag_slug }}&difficulty={{ recommended_action.lc_difficulty }}"
+               target="_blank" class="btn btn-primary w-100">
+                Find this problem on LeetCode
+            </a>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info mb-3">
+    No recommendation available (all topics mastered or insufficient data).
+</div>
+{% endif %}
+
+<p>Select a strategy and eval seed to run a trace with this student:</p>
+
+<form method="post" id="traceForm">
+    <input type="hidden" name="leetcode_username" value="{{ lc_username }}">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label>Strategy</label>
+                <select name="strategy" class="form-select">
+                    {% for s in strategy_options %}
+                    <option value="{{ s }}" {% if selected_strategy == s %}selected{% endif %}>
+                        {{ STRATEGY_LABELS.get(s, s) }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Student</label>
+                <select name="student" class="form-select">
+                    {% for s in student_options %}
+                    <option value="{{ s }}" {% if selected_student == s %}selected{% endif %}>
+                        {{ s }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Eval Seed</label>
+                <select name="eval_seed" class="form-select">
+                    {% for s in eval_seeds %}
+                    <option value="{{ s }}" {% if eval_seed|string == s|string %}selected{% endif %}>
+                        {{ s }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+                Run Demo Trace
+            </button>
+        </div>
+        <div class="col-md-8">
+            {% if steps_data %}
+            <h5>Trace Results</h5>
+            {% if trace_summary %}
+            <p class="text-secondary small mb-2">
+                {{ STRATEGY_LABELS.get(trace_summary.strategy, trace_summary.strategy) }}
+                &middot; eval seed {{ trace_summary.eval_seed }}
+                &middot; {{ trace_summary.n_steps }} problems
+                &middot; reward {{ "%+.2f"|format(trace_summary.total_reward) }}
+                &middot; completion {{ "%.0f"|format(trace_summary.completion_rate * 100) }}%
+                &middot; skill gain {{ "%+.4f"|format(trace_summary.skill_gain_total) }}
+            </p>
+            {% endif %}
+            <div class="table-responsive">
+                <table class="table table-striped small">
+                    <thead>
+                    <tr>
+                        <th>Step</th>
+                        <th>Topic</th>
+                        <th>Difficulty</th>
+                        <th>Problem (LeetCode)</th>
+                        <th>Outcome</th>
+                        <th>Reward</th>
+                        <th>Mastery After</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for step in steps_data %}
+                    <tr>
+                        <td>{{ step.step }}</td>
+                        <td>{{ step.topic }}</td>
+                        <td>{{ step.difficulty_label }}</td>
+                        <td>
+                            {% if step.problem.id %}<span class="text-muted">#{{ step.problem.id }}</span> {% endif %}
+                            <a href="{{ step.problem.url }}" target="_blank" rel="noopener"
+                               title="Open on LeetCode">{{ step.problem.title }}</a>
+                            {% if step.problem.matched == "fuzzy" %}
+                            <span class="text-warning" title="Title matched approximately">&#8776;</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ step.outcome }}</td>
+                        <td>{{ "%.2f"|format(step.reward) }}</td>
+                        <td>{{ "%.3f"|format(step.mastery_after) }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</form>
+
+{% elif form_submitted %}
+<div class="alert alert-warning mb-3">
+    Student was fetched from LeetCode but no trace was run. Adjust your selections
+    above and click <strong>Run Demo Trace</strong>.
+</div>
+{% else %}
+<!-- LeetCode form -->
+<div class="row mb-5">
+    <div class="col-md-6 offset-md-3">
+        <form method="post" id="leetcodeForm">
+            <div class="mb-3">
+                <label>LeetCode Username</label>
+                <input type="text" name="username" class="form-control"
+                       placeholder="e.g. neal" required>
+            </div>
+            <div class="mb-3">
+                <label>LeetCode Session Cookie (optional)</label>
+                <small>If you have a LEETCODE_SESSION cookie, it will be used for
+                authenticated access. Otherwise public data will be fetched.</small>
+                <input type="text" name="session_cookie" class="form-control"
+                       placeholder="LEETCODE_SESSION value">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+                Fetch Student Profile
+            </button>
+        </form>
+    </div>
+</div>
+
+<hr>
+
+<h5>Existing Train Students</h5>
+<p>You can also select from the 18 training students:</p>
+<div class="row">
+    {% for s in student_options %}
+    <div class="col-md-3 mb-2">
+        <div class="card h-100">
+            <div class="card-body">
+                <h6 class="card-title">{{ s }}</h6>
+                <p class="card-text">{{ STRATEGY_LABELS.get(s.split, '') if STRATEGY_LABELS.get(s.split) else '' }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="mb-3">Dashboard</h1>
+        <p class="text-secondary">Adaptive Coding-Practice Recommendation — Phase 7</p>
+    </div>
+</div>
+
+<!-- Key Stat Cards Row -->
+<div class="row g-4 mb-4">
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="stat-card">
+            <div class="stat-label">Total Students</div>
+            <div class="stat-value">{{ total_students }}</div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="stat-card">
+            <div class="stat-label">Best Strategy</div>
+            <div class="stat-value">{{ best_strategy }}</div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="stat-card">
+            <div class="stat-label">Avg. Reward</div>
+            <div class="stat-value">{{ avg_reward }}</div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="stat-card">
+            <div class="stat-label">Avg. Skill Gain</div>
+            <div class="stat-value">{{ avg_skill_gain }}</div>
+        </div>
+    </div>
+</div>
+
+<!-- Metrics Overview -->
+<div class="row g-4">
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Strategy Performance Summary</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 small">
+                        <thead>
+                            <tr>
+                                <th>Strategy</th>
+                                <th>Type</th>
+                                <th>Mean Skill Gain</th>
+                                <th>Mean Reward</th>
+                                <th>Completion Rate</th>
+                                <th>Calibration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for _, row in data["summary"].iterrows() %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2"
+                                              style="color: {{ STRATEGY_COLORS.get(STRATEGY_LABELS.get(row.strategy, '#64748b'), '#64748b') }};">
+                                            {{ STRATEGY_LABELS.get(row.strategy, row.strategy) }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge badge-custom {% if STRATEGY_TYPE.get(row.strategy) == 'Baseline' %}bg-secondary{% else %}bg-primary{% endif %}">
+                                        {{ STRATEGY_TYPE.get(row.strategy, 'RL') }}
+                                    </span>
+                                </td>
+                                <td>{{ "%.4f"|format(row.skill_gain_mean) }}</td>
+                                <td>{{ "%.2f"|format(row.total_reward_mean) }}</td>
+                                <td>{{ "%.2f"|format(row.completion_rate_mean) }}</td>
+                                <td>{{ "%.2f"|format(row.calibration_mean) }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Distribution by Strategy Type</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span>Baselines</span>
+                    <span>{{ data["summary"].filter(like="Baseline").shape[0] if hasattr(data["summary"], 'filter') else 3 }}</span>
+                </div>
+                <div class="progress" role="progressbar">
+                    <div class="progress-bar" style="width: {{ 30 | safe }}%"></div>
+                </div>
+                <div class="progress" role="progressbar">
+                    <div class="progress-bar bg-primary" style="width: {{ 70 | safe }}%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

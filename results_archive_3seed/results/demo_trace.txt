@@ -1,0 +1,308 @@
+====================================================================================================
+ADAPTIVE CODING-PRACTICE RECOMMENDATION — per-step demo
+student S019 (beginner, Samir), eval_seed=100, env_seed=10000300
+strategies: SARSA vs Prerequisite-Based — selected as best RL / best baseline by mean skill gain over the 30 held-out cells
+====================================================================================================
+
+====================================================================================================
+  SARSA   (model seed 0, env_seed 10000300)
+  student S019 / beginner / Samir, 20 recommendations
+====================================================================================================
+
+  step  1/20
+    state    acc=0.80 frust=0.00 last_diff=Easy consec_fail=0 streak=0 mastery=0.184
+    action   [25] Medium Dynamic Programming
+    problem  #226 "Coin Change" (expected 31 min, mastery 0.184, challenge appropriate)
+    outcome  PASS in 66.6 min (2.15x), hints=0, wrong=1, error=Logic Error, skill_gain=+0.0128
+    reward   +1.01   gain=+0.51  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.80  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+1.01 clipped=+1.01
+
+  step  2/20
+    state    acc=0.80 frust=0.00 last_diff=Medium consec_fail=0 streak=1 mastery=0.171
+    action   [30] Easy Binary Search
+    problem  #252 "Search Insert Position" (expected 11 min, mastery 0.171, challenge appropriate)
+    outcome  PASS in 21.8 min (1.98x), hints=0, wrong=0, error=-, skill_gain=+0.0091
+    reward   +1.00   gain=+0.36  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.67  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+1.00 clipped=+1.00
+
+  step  3/20
+    state    acc=0.90 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.280
+    action   [12] Easy Queue
+    problem  #165 "Design Circular Queue (Easy)" (expected 12 min, mastery 0.280, challenge appropriate)
+    outcome  PASS in 27.4 min (2.28x), hints=0, wrong=0, error=-, skill_gain=+0.0079
+    reward   +0.71   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.91  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+0.71 clipped=+0.71
+
+  step  4/20
+    state    acc=1.00 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.288
+    action   [12] Easy Queue
+    problem  #162 "Moving Average from Data Stream" (expected 16 min, mastery 0.288, challenge appropriate)
+    outcome  PASS in 40.8 min (2.55x), hints=0, wrong=1, error=Logic Error, skill_gain=+0.0078
+    reward   +0.29   gain=+0.31  success=+0.80  challenge=+0.50  hint=-0.00  time=-1.12  frust=-0.00  rep_topic=-0.20  rep_problem=+0.00  streak=-0.00  | raw=+0.29 clipped=+0.29
+
+  step  5/20
+    state    acc=1.00 frust=0.00 last_diff=Easy consec_fail=0 streak=2 mastery=0.176
+    action   [18] Easy Trees
+    problem  #191 "Invert Binary Tree" (expected 12 min, mastery 0.176, challenge appropriate)
+    outcome  PASS in 20.1 min (1.67x), hints=0, wrong=0, error=-, skill_gain=+0.0091
+    reward   +1.25   gain=+0.36  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.42  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+1.25 clipped=+1.25
+
+  step  6/20
+    state    acc=1.00 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.296
+    action   [12] Easy Queue
+    problem  #161 "Implement Queue using Stacks" (expected 18 min, mastery 0.296, challenge appropriate)
+    outcome  PASS in 26.1 min (1.45x), hints=0, wrong=0, error=-, skill_gain=+0.0077
+    reward   +1.37   gain=+0.31  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.24  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+1.37 clipped=+1.37
+
+  step  7/20
+    state    acc=1.00 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.304
+    action   [12] Easy Queue
+    problem  #164 "Recent Counter" (expected 18 min, mastery 0.304, challenge appropriate)
+    outcome  PASS in 23.0 min (1.28x), hints=0, wrong=0, error=-, skill_gain=+0.0077
+    reward   +1.30   gain=+0.31  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.10  frust=-0.00  rep_topic=-0.20  rep_problem=+0.00  streak=-0.00  | raw=+1.30 clipped=+1.30
+
+  step  8/20
+    state    acc=1.00 frust=0.00 last_diff=Easy consec_fail=0 streak=2 mastery=0.185
+    action   [18] Easy Trees
+    problem  #193 "Same Tree" (expected 17 min, mastery 0.185, challenge appropriate)
+    outcome  FAIL in 51.0 min (3.00x), hints=0, wrong=2, error=Syntax Error, skill_gain=+0.0022
+    reward   -0.93   gain=+0.09  success=+0.00  challenge=+0.50  hint=-0.00  time=-1.48  frust=-0.04  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=-0.93 clipped=-0.93
+
+  step  9/20
+    state    acc=0.90 frust=0.09 last_diff=Easy consec_fail=1 streak=1 mastery=0.296
+    action   [ 6] Easy Linked Lists
+    problem  #132 "Merge Two Sorted Lists" (expected 10 min, mastery 0.296, challenge appropriate)
+    outcome  PASS in 18.9 min (1.89x), hints=0, wrong=0, error=-, skill_gain=+0.0076
+    reward   +1.01   gain=+0.30  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.59  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+1.01 clipped=+1.01
+
+  step 10/20
+    state    acc=0.90 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.311
+    action   [12] Easy Queue
+    problem  #163 "Number of Students Unable to Eat Lunch" (expected 12 min, mastery 0.311, challenge appropriate)
+    outcome  FAIL in 33.8 min (2.82x), hints=0, wrong=2, error=Edge Case Error, skill_gain=+0.0019
+    reward   -0.80   gain=+0.08  success=+0.00  challenge=+0.50  hint=-0.00  time=-1.33  frust=-0.04  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=-0.80 clipped=-0.80
+
+  step 11/20
+    state    acc=0.80 frust=0.09 last_diff=Easy consec_fail=1 streak=1 mastery=0.304
+    action   [ 6] Easy Linked Lists
+    problem  #134 "Middle of the Linked List" (expected 14 min, mastery 0.304, challenge appropriate)
+    outcome  FAIL in 42.0 min (3.00x), hints=0, wrong=1, error=Syntax Error, skill_gain=+0.0019
+    reward   -0.99   gain=+0.08  success=+0.00  challenge=+0.50  hint=-0.00  time=-1.48  frust=-0.08  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=-0.99 clipped=-0.99
+
+  step 12/20
+    state    acc=0.70 frust=0.19 last_diff=Easy consec_fail=2 streak=1 mastery=0.173
+    action   [33] Easy Sorting
+    problem  #269 "Third Maximum Number" (expected 11 min, mastery 0.173, challenge appropriate)
+    outcome  PASS in 21.1 min (1.92x), hints=1, wrong=0, error=-, skill_gain=+0.0074
+    reward   +0.76   gain=+0.29  success=+0.80  challenge=+0.50  hint=-0.18  time=-0.61  frust=-0.04  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+0.76 clipped=+0.76
+
+  step 13/20
+    state    acc=0.70 frust=0.09 last_diff=Easy consec_fail=0 streak=1 mastery=0.313
+    action   [12] Easy Queue
+    problem  #165 "Design Circular Queue (Easy)" (expected 12 min, mastery 0.313, challenge appropriate)
+    outcome  FAIL in 29.0 min (2.42x), hints=0, wrong=1, error=Implementation Error, skill_gain=+0.0019
+    reward   -0.52   gain=+0.08  success=+0.00  challenge=+0.50  hint=-0.00  time=-1.01  frust=-0.08  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=-0.52 clipped=-0.52
+
+  step 14/20
+    state    acc=0.60 frust=0.18 last_diff=Easy consec_fail=1 streak=1 mastery=0.197
+    action   [25] Medium Dynamic Programming
+    problem  #227 "Longest Increasing Subsequence" (expected 21 min, mastery 0.197, challenge appropriate)
+    outcome  PASS in 46.3 min (2.20x), hints=2, wrong=0, error=-, skill_gain=+0.0084
+    reward   +0.40   gain=+0.34  success=+0.80  challenge=+0.50  hint=-0.36  time=-0.84  frust=-0.04  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+0.40 clipped=+0.40
+
+  step 15/20
+    state    acc=0.60 frust=0.08 last_diff=Medium consec_fail=0 streak=1 mastery=0.188
+    action   [19] Medium Trees
+    problem  #197 "Validate Binary Search Tree" (expected 25 min, mastery 0.188, challenge appropriate)
+    outcome  PASS in 54.6 min (2.19x), hints=1, wrong=0, error=-, skill_gain=+0.0106
+    reward   +0.72   gain=+0.43  success=+0.80  challenge=+0.50  hint=-0.18  time=-0.83  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+0.72 clipped=+0.72
+
+  step 16/20
+    state    acc=0.60 frust=0.00 last_diff=Medium consec_fail=0 streak=1 mastery=0.198
+    action   [19] Medium Trees
+    problem  #200 "Construct Binary Tree from Preorder and Inorder Traversal" (expected 22 min, mastery 0.198, challenge appropriate)
+    outcome  PASS in 41.3 min (1.88x), hints=1, wrong=0, error=-, skill_gain=+0.0107
+    reward   +0.77   gain=+0.43  success=+0.80  challenge=+0.50  hint=-0.18  time=-0.58  frust=-0.00  rep_topic=-0.20  rep_problem=+0.00  streak=-0.00  | raw=+0.77 clipped=+0.77
+
+  step 17/20
+    state    acc=0.60 frust=0.00 last_diff=Medium consec_fail=0 streak=2 mastery=0.092
+    action   [28] Medium Greedy
+    problem  #241 "Jump Game" (expected 40 min, mastery 0.092, challenge too_hard)
+    outcome  FAIL in 92.3 min (2.31x), hints=2, wrong=2, error=Conceptual Error, skill_gain=+0.0011
+    reward   -1.91   gain=+0.05  success=+0.00  challenge=-0.60  hint=-0.36  time=-0.93  frust=-0.07  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=-1.91 clipped=-1.91
+
+  step 18/20
+    state    acc=0.50 frust=0.16 last_diff=Medium consec_fail=1 streak=1 mastery=0.206
+    action   [25] Medium Dynamic Programming
+    problem  #230 "Word Break (DP)" (expected 33 min, mastery 0.206, challenge appropriate)
+    outcome  FAIL in 99.0 min (3.00x), hints=0, wrong=2, error=Edge Case Error, skill_gain=+0.0031
+    reward   -1.00   gain=+0.12  success=+0.00  challenge=+0.50  hint=-0.00  time=-1.48  frust=-0.14  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=-1.00 clipped=-1.00
+
+  step 19/20
+    state    acc=0.50 frust=0.31 last_diff=Medium consec_fail=2 streak=1 mastery=0.180
+    action   [34] Medium Sorting
+    problem  #271 "Sort Colors" (expected 22 min, mastery 0.180, challenge appropriate)
+    outcome  PASS in 47.4 min (2.16x), hints=3, wrong=1, error=Conceptual Error, skill_gain=+0.0065
+    reward   +0.12   gain=+0.26  success=+0.80  challenge=+0.50  hint=-0.54  time=-0.81  frust=-0.10  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+0.12 clipped=+0.12
+
+  step 20/20
+    state    acc=0.50 frust=0.21 last_diff=Medium consec_fail=0 streak=1 mastery=0.209
+    action   [19] Medium Trees
+    problem  #196 "Binary Tree Level Order Traversal" (expected 26 min, mastery 0.209, challenge appropriate)
+    outcome  PASS in 41.0 min (1.58x), hints=0, wrong=1, error=Logic Error, skill_gain=+0.0118
+    reward   +1.38   gain=+0.47  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.34  frust=-0.05  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+1.38 clipped=+1.38
+
+  ------------------------------------------------------------------------------------------------
+  SARSA                  reward=   +5.94  skill_gain=0.1373  completion=0.70  calibration=0.95  unique_topics= 7  frustration=0.11
+
+====================================================================================================
+  Prerequisite-Based   (model seed 0, env_seed 10000300)
+  student S019 / beginner / Samir, 20 recommendations
+====================================================================================================
+
+  step  1/20
+    state    acc=0.80 frust=0.00 last_diff=Easy consec_fail=0 streak=0 mastery=0.173
+    action   [33] Easy Sorting
+    problem  #266 "Sort Array by Parity" (expected 16 min, mastery 0.173, challenge appropriate)
+    outcome  PASS in 31.3 min (1.96x), hints=0, wrong=0, error=-, skill_gain=+0.0091
+    reward   +1.02   gain=+0.36  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.64  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+1.02 clipped=+1.02
+
+  step  2/20
+    state    acc=0.80 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.182
+    action   [33] Easy Sorting
+    problem  #268 "Height Checker" (expected 9 min, mastery 0.182, challenge appropriate)
+    outcome  PASS in 15.8 min (1.76x), hints=0, wrong=1, error=Syntax Error, skill_gain=+0.0090
+    reward   +0.97   gain=+0.36  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.49  frust=-0.00  rep_topic=-0.20  rep_problem=+0.00  streak=-0.00  | raw=+0.97 clipped=+0.97
+
+  step  3/20
+    state    acc=0.90 frust=0.00 last_diff=Easy consec_fail=0 streak=2 mastery=0.191
+    action   [34] Medium Sorting
+    problem  #271 "Sort Colors" (expected 22 min, mastery 0.191, challenge appropriate)
+    outcome  PASS in 47.4 min (2.15x), hints=1, wrong=0, error=-, skill_gain=+0.0108
+    reward   +0.25   gain=+0.43  success=+0.80  challenge=+0.50  hint=-0.18  time=-0.80  frust=-0.00  rep_topic=-0.20  rep_problem=+0.00  streak=-0.30  | raw=+0.25 clipped=+0.25
+
+  step  4/20
+    state    acc=1.00 frust=0.00 last_diff=Medium consec_fail=0 streak=3 mastery=0.202
+    action   [34] Medium Sorting
+    problem  #275 "Reorder Data in Log Files" (expected 34 min, mastery 0.202, challenge appropriate)
+    outcome  FAIL in 94.1 min (2.77x), hints=0, wrong=1, error=Logic Error, skill_gain=+0.0031
+    reward   -1.54   gain=+0.13  success=+0.00  challenge=+0.50  hint=-0.00  time=-1.29  frust=-0.07  rep_topic=-0.20  rep_problem=+0.00  streak=-0.60  | raw=-1.54 clipped=-1.54
+
+  step  5/20
+    state    acc=0.90 frust=0.15 last_diff=Medium consec_fail=1 streak=4 mastery=0.205
+    action   [34] Medium Sorting
+    problem  #272 "Kth Largest Element in an Array" (expected 21 min, mastery 0.205, challenge appropriate)
+    outcome  PASS in 36.3 min (1.73x), hints=2, wrong=1, error=Conceptual Error, skill_gain=+0.0084
+    reward   -0.31   gain=+0.34  success=+0.80  challenge=+0.50  hint=-0.36  time=-0.46  frust=-0.02  rep_topic=-0.20  rep_problem=+0.00  streak=-0.90  | raw=-0.31 clipped=-0.31
+
+  step  6/20
+    state    acc=0.90 frust=0.05 last_diff=Medium consec_fail=0 streak=5 mastery=0.213
+    action   [34] Medium Sorting
+    problem  #273 "Sort an Array" (expected 36 min, mastery 0.213, challenge appropriate)
+    outcome  FAIL in 61.3 min (1.70x), hints=0, wrong=1, error=Edge Case Error, skill_gain=+0.0031
+    reward   -1.31   gain=+0.12  success=+0.00  challenge=+0.50  hint=-0.00  time=-0.44  frust=-0.09  rep_topic=-0.20  rep_problem=+0.00  streak=-1.20  | raw=-1.31 clipped=-1.31
+
+  step  7/20
+    state    acc=0.80 frust=0.20 last_diff=Medium consec_fail=1 streak=5 mastery=0.216
+    action   [33] Easy Sorting
+    problem  #267 "Relative Sort Array" (expected 11 min, mastery 0.216, challenge appropriate)
+    outcome  PASS in 22.3 min (2.03x), hints=0, wrong=0, error=-, skill_gain=+0.0082
+    reward   -0.82   gain=+0.33  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.70  frust=-0.05  rep_topic=-0.20  rep_problem=+0.00  streak=-1.50  | raw=-0.82 clipped=-0.82
+
+  step  8/20
+    state    acc=0.80 frust=0.10 last_diff=Easy consec_fail=0 streak=5 mastery=0.225
+    action   [33] Easy Sorting
+    problem  #269 "Third Maximum Number" (expected 11 min, mastery 0.225, challenge appropriate)
+    outcome  PASS in 21.2 min (1.93x), hints=0, wrong=0, error=-, skill_gain=+0.0083
+    reward   -0.99   gain=+0.33  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.62  frust=-0.00  rep_topic=-0.20  rep_problem=+0.00  streak=-1.80  | raw=-0.99 clipped=-0.99
+
+  step  9/20
+    state    acc=0.80 frust=0.00 last_diff=Easy consec_fail=0 streak=5 mastery=0.233
+    action   [33] Easy Sorting
+    problem  #270 "Missing Number" (expected 8 min, mastery 0.233, challenge appropriate)
+    outcome  FAIL in 23.0 min (2.88x), hints=0, wrong=2, error=Edge Case Error, skill_gain=+0.0021
+    reward   -2.00   gain=+0.08  success=+0.00  challenge=+0.50  hint=-0.00  time=-1.38  frust=-0.04  rep_topic=-0.20  rep_problem=+0.00  streak=-2.10  | raw=-3.14 clipped=-2.00
+
+  step 10/20
+    state    acc=0.70 frust=0.09 last_diff=Easy consec_fail=1 streak=5 mastery=0.235
+    action   [33] Easy Sorting
+    problem  #268 "Height Checker" (expected 9 min, mastery 0.235, challenge appropriate)
+    outcome  FAIL in 17.6 min (1.96x), hints=0, wrong=2, error=Implementation Error, skill_gain=+0.0021
+    reward   -2.00   gain=+0.08  success=+0.00  challenge=+0.50  hint=-0.00  time=-0.64  frust=-0.08  rep_topic=-0.20  rep_problem=+0.00  streak=-2.40  | raw=-2.74 clipped=-2.00
+
+  step 11/20
+    state    acc=0.60 frust=0.19 last_diff=Easy consec_fail=2 streak=5 mastery=0.237
+    action   [33] Easy Sorting
+    problem  #270 "Missing Number" (expected 8 min, mastery 0.237, challenge appropriate)
+    outcome  PASS in 21.9 min (2.73x), hints=0, wrong=1, error=Edge Case Error, skill_gain=+0.0080
+    reward   -2.00   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-1.27  frust=-0.04  rep_topic=-0.20  rep_problem=+0.00  streak=-2.70  | raw=-2.59 clipped=-2.00
+
+  step 12/20
+    state    acc=0.60 frust=0.09 last_diff=Easy consec_fail=0 streak=5 mastery=0.245
+    action   [33] Easy Sorting
+    problem  #266 "Sort Array by Parity" (expected 16 min, mastery 0.245, challenge appropriate)
+    outcome  FAIL in 48.0 min (3.00x), hints=0, wrong=2, error=Syntax Error, skill_gain=+0.0021
+    reward   -2.00   gain=+0.08  success=+0.00  challenge=+0.50  hint=-0.00  time=-1.48  frust=-0.08  rep_topic=-0.20  rep_problem=+0.00  streak=-3.00  | raw=-4.18 clipped=-2.00
+
+  step 13/20
+    state    acc=0.50 frust=0.18 last_diff=Easy consec_fail=1 streak=5 mastery=0.247
+    action   [33] Easy Sorting
+    problem  #266 "Sort Array by Parity" (expected 16 min, mastery 0.247, challenge appropriate)
+    outcome  PASS in 41.4 min (2.59x), hints=0, wrong=0, error=-, skill_gain=+0.0079
+    reward   -2.00   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-1.15  frust=-0.04  rep_topic=-0.20  rep_problem=-0.35  streak=-3.30  | raw=-3.42 clipped=-2.00
+
+  step 14/20
+    state    acc=0.50 frust=0.08 last_diff=Easy consec_fail=0 streak=5 mastery=0.255
+    action   [33] Easy Sorting
+    problem  #270 "Missing Number" (expected 8 min, mastery 0.255, challenge appropriate)
+    outcome  PASS in 18.7 min (2.33x), hints=0, wrong=0, error=-, skill_gain=+0.0080
+    reward   -2.00   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.95  frust=-0.00  rep_topic=-0.20  rep_problem=+0.00  streak=-3.60  | raw=-3.12 clipped=-2.00
+
+  step 15/20
+    state    acc=0.60 frust=0.00 last_diff=Easy consec_fail=0 streak=5 mastery=0.263
+    action   [33] Easy Sorting
+    problem  #267 "Relative Sort Array" (expected 11 min, mastery 0.263, challenge appropriate)
+    outcome  PASS in 27.2 min (2.47x), hints=0, wrong=1, error=Implementation Error, skill_gain=+0.0081
+    reward   -2.00   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-1.06  frust=-0.00  rep_topic=-0.20  rep_problem=+0.00  streak=-3.90  | raw=-3.53 clipped=-2.00
+
+  step 16/20
+    state    acc=0.60 frust=0.00 last_diff=Easy consec_fail=0 streak=5 mastery=0.269
+    action   [15] Easy Recursion
+    problem  #177 "Climbing Stairs" (expected 11 min, mastery 0.269, challenge appropriate)
+    outcome  PASS in 22.2 min (2.01x), hints=0, wrong=1, error=Syntax Error, skill_gain=+0.0080
+    reward   +0.93   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.69  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+0.93 clipped=+0.93
+
+  step 17/20
+    state    acc=0.70 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.271
+    action   [33] Easy Sorting
+    problem  #267 "Relative Sort Array" (expected 11 min, mastery 0.271, challenge appropriate)
+    outcome  PASS in 22.0 min (2.00x), hints=0, wrong=1, error=Implementation Error, skill_gain=+0.0080
+    reward   +0.94   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.68  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+0.94 clipped=+0.94
+
+  step 18/20
+    state    acc=0.70 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.277
+    action   [15] Easy Recursion
+    problem  #176 "Fibonacci Number" (expected 13 min, mastery 0.277, challenge appropriate)
+    outcome  PASS in 35.9 min (2.76x), hints=0, wrong=1, error=Logic Error, skill_gain=+0.0080
+    reward   +0.33   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-1.29  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+0.33 clipped=+0.33
+
+  step 19/20
+    state    acc=0.70 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.279
+    action   [33] Easy Sorting
+    problem  #267 "Relative Sort Array" (expected 11 min, mastery 0.279, challenge appropriate)
+    outcome  PASS in 17.0 min (1.55x), hints=0, wrong=1, error=Syntax Error, skill_gain=+0.0079
+    reward   +1.30   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.32  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+1.30 clipped=+1.30
+
+  step 20/20
+    state    acc=0.80 frust=0.00 last_diff=Easy consec_fail=0 streak=1 mastery=0.280
+    action   [12] Easy Queue
+    problem  #161 "Implement Queue using Stacks" (expected 18 min, mastery 0.280, challenge appropriate)
+    outcome  PASS in 38.6 min (2.15x), hints=0, wrong=0, error=-, skill_gain=+0.0079
+    reward   +0.82   gain=+0.32  success=+0.80  challenge=+0.50  hint=-0.00  time=-0.80  frust=-0.00  rep_topic=+0.00  rep_problem=+0.00  streak=-0.00  | raw=+0.82 clipped=+0.82
+
+  ------------------------------------------------------------------------------------------------
+  Prerequisite-Based     reward=  -12.40  skill_gain=0.1382  completion=0.75  calibration=1.00  unique_topics= 3  frustration=0.00
+
+====================================================================================================
+  SUMMARY
+    SARSA                  reward=   +5.94  skill_gain=0.1373  completion=0.70  calibration=0.95  unique_topics= 7
+    Prerequisite-Based     reward=  -12.40  skill_gain=0.1382  completion=0.75  calibration=1.00  unique_topics= 3
+    difference (SARSA - Prerequisite-Based): reward +18.34, skill_gain -0.0009
+====================================================================================================

@@ -179,6 +179,42 @@ def build_profile(
     )
 
 
+def build_profile_from_metrics(
+    student_id: str,
+    name: str,
+    split: str,
+    ability: float,
+    learning_rate: float,
+    frustration_sensitivity: float,
+    hint_inclination: float,
+    time_factor: float,
+    mastery: dict[str, float],
+    error_bias: dict[str, float] | None = None,
+) -> StudentProfile:
+    """Build a StudentProfile from explicit proficiency metrics (e.g. from LeetCode).
+
+    This is useful for initializing a student from external data sources
+    while reusing the simulator's attempt dynamics unchanged.
+    """
+    if error_bias is None:
+        error_bias = {"Syntax Error": 1.0, "Logic Error": 1.2, "Conceptual Error": 1.0,
+                      "Time Complexity Error": 0.6, "Edge Case Error": 0.8, "Implementation Error": 1.0}
+
+    return StudentProfile(
+        student_id=student_id,
+        name=name,
+        profile="leetcode_import",
+        split=split,
+        ability=ability,
+        learning_rate=learning_rate,
+        frustration_sensitivity=frustration_sensitivity,
+        hint_inclination=hint_inclination,
+        time_factor=time_factor,
+        error_bias=error_bias,
+        mastery=mastery,
+    )
+
+
 # --------------------------------------------------------------------------
 # Attempt simulation
 # --------------------------------------------------------------------------

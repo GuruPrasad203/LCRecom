@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Report Figures{% endblock %}
+{% block content %}
+<h1 class="mt-4">Report Figures</h1>
+<p class="lead">The ten figures from the final report.</p>
+
+<div class="row mb-4">
+    {% for code, label in fig_names %}
+    <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">{{ label }}</h6>
+                <a href="{{ url_for('figure', code=code) }}" class="card-link stretched-link">
+                    View Figure
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Adaptive Coding RL - Home{% endblock %}
+{% block content %}
+<h1 class="mt-4">Adaptive Coding-Practice Recommendation</h1>
+<p class="lead">Pick a page below, or use the navigation menu at the top.</p>
+<hr>
+<p>This Flask frontend provides the same interface as the original Streamlit app:</p>
+<div class="list-group mb-4">
+    {% for item, blurb in [
+        ("Report Figures", "View the 10 evaluation figures"),
+        ("Evaluation Metrics", "Summary, cell means, and per-run metrics"),
+        ("Demo / Trace", "Run a per-step demo trace"),
+        ("Training Curves", "Learning curves across training seeds"),
+        ("LeetCode Integration", "Import a LeetCode profile into the recommender"),
+    ] %}
+    <a href="{{ url_for(NAV_ROUTES[item]) }}"
+       class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ item }}</h5>
+            <span class="text-muted">&rarr;</span>
+        </div>
+        <p class="mb-0 text-secondary">{{ blurb }}</p>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

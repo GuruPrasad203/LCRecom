@@ -1,0 +1,269 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="mb-3">Evaluation</h1>
+        <p class="text-secondary">Per-run metrics and student analysis</p>
+    </div>
+</div>
+
+<!-- Strategy Selector -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label small mb-1">Strategy</label>
+                <select name="strategy" class="form-select form-select-sm">
+                    <option value="">All Strategies</option>
+                    {% for s in strategy_order %}
+                    <option value="{{ s }}" {% if strategy == s %}selected{% endif %}>
+                        {{ STRATEGY_LABELS.get(s, s) }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label small mb-1">Tab</label>
+                <select name="tab" class="form-select form-select-sm">
+                    <option value="summary" {% if with_tab == 'summary' %}selected{% endif %}>Summary</option>
+                    <option value="cell_means" {% if with_tab == 'cell_means' %}selected{% endif %}>Cell Means</option>
+                    <option value="per_run" {% if with_tab == 'per_run' %}selected{% endif %}>Per-Run</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary btn-sm w-100">Apply</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Summary Tab -->
+{% if with_tab == 'summary' %}
+<div class="row g-4">
+    <div class="col-lg-8 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Summary by Strategy (30 held-out cells)</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 small">
+                        <thead>
+                            <tr>
+                                <th>Strategy</th>
+                                <th>Mean Skill Gain</th>
+                                <th>Mean Reward</th>
+                                <th>Completion Rate</th>
+                                <th>Calibration</th>
+                                <th>Frustration End</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for _, row in data["summary"].iterrows() %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2"
+                                              style="color: {{ STRATEGY_COLORS.get(STRATEGY_LABELS.get(row.strategy, '#64748b'), '#64748b') }};">
+                                            {{ STRATEGY_LABELS.get(row.strategy, row.strategy) }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>{{ "%.4f"|format(row.skill_gain_mean) }}</td>
+                                <td>{{ "%.2f"|format(row.total_reward_mean) }}</td>
+                                <td>{{ "%.2f"|format(row.completion_rate_mean) }}</td>
+                                <td>{{ "%.2f"|format(row.calibration_mean) }}</td>
+                                <td>{{ "%.2f"|format(row.frustration_end_mean) }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Key Insights</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-check2-circle text-success me-2"></i>
+                            <div>
+                                <strong>Best Strategy:</strong> {{ STRATEGY_LABELS.get(data["summary"].loc[data["summary"]["skill_gain_mean"].idxmax(), "strategy"], "Unknown") }}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-graph-up text-primary me-2"></i>
+                            <div>
+                                <strong>Average Reward:</strong> {{ "%.2f"|format(data["summary"]["total_reward_mean"].mean()) }}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mb-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-percent text-warning me-2"></i>
+                            <div>
+                                <strong>Avg. Calibration:</strong> {{ "%.2f"|format(data["summary"]["calibration_mean"].mean()) }}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Cell Means Tab -->
+{% if with_tab == 'cell_means' %}
+<div class="row g-4">
+    <div class="col-lg-8 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Cell Means — 30 Held-out Cells</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 small">
+                        <thead>
+                            <tr>
+                                <th>Strategy</th>
+                                <th>Student</th>
+                                <th>Skill Gain</th>
+                                <th>Total Reward</th>
+                                <th>Completion Rate</th>
+                                <th>Calibration</th>
+                                <th>Frustration End</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for _, row in data["cell_means"].head(30).iterrows() %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2"
+                                              style="color: {{ STRATEGY_COLORS.get(STRATEGY_LABELS.get(row.strategy, '#64748b'), '#64748b') }};">
+                                            {{ STRATEGY_LABELS.get(row.strategy, row.strategy) }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>{{ row.student_id if hasattr(row, 'student_id') else '' }}</td>
+                                <td>{{ "%.4f"|format(row.skill_gain) }}</td>
+                                <td>{{ "%.2f"|format(row.total_reward) }}</td>
+                                <td>{{ "%.2f"|format(row.completion_rate) }}</td>
+                                <td>{{ "%.2f"|format(row.calibration) }}</td>
+                                <td>{{ "%.2f"|format(row.frustration_end) }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Distribution Overview</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <strong>Total Runs:</strong> {{ data["per_run"].shape[0] if hasattr(data["per_run"], 'shape') else 'N/A' }}
+                    </li>
+                    <li class="mb-3">
+                        <strong>Students per Strategy:</strong> 
+                        {% for s in strategy_order %}
+                            {{ s }}: {{ data["per_run"].filter(like=s).shape[0] if hasattr(data["per_run"], 'filter') else 0 }}&nbsp;
+                        {% endfor %}
+                    </li>
+                    <li class="mb-3">
+                        <strong>Avg. Skill Gain:</strong> 
+                        {{ "%.4f"|format(data["per_run"]["skill_gain"].mean()) if hasattr(data["per_run"], 'columns') else 'N/A' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Per-Run Tab -->
+{% if with_tab == 'per_run' %}
+<div class="row g-4">
+    <div class="col-lg-8 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Per-Run Metrics</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 small">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Student</th>
+                                <th>Strategy</th>
+                                <th>Skill Gain</th>
+                                <th>Total Reward</th>
+                                <th>Completion Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for i, (_, row) in enumerate(data["per_run"].head(20).iterrows()) %}
+                            <tr>
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ row.student_id if hasattr(row, 'student_id') else '' }}</td>
+                                <td>
+                                    <span class="badge badge-custom"
+                                          style="background: {{ STRATEGY_COLORS.get(STRATEGY_LABELS.get(row.strategy, '#64748b'), '#64748b') .1 }}">
+                                        {{ STRATEGY_LABELS.get(row.strategy, row.strategy) }}
+                                    </span>
+                                </td>
+                                <td>{{ "%.4f"|format(row.skill_gain) }}</td>
+                                <td>{{ "%.2f"|format(row.total_reward) }}</td>
+                                <td>{{ "%.2f"|format(row.completion_rate) }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Top 20 Runs Summary</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <strong>Highest Skill Gain:</strong> {{ "%.4f"|format(data["per_run"].head(1)["skill_gain"].max()) if hasattr(data["per_run"], 'columns') else 'N/A' }}
+                    </li>
+                    <li class="mb-3">
+                        <strong>Unique Strategies:</strong> 
+                        {% if unique_strategies %}
+                        {{ unique_strategies | join(', ') }}
+                        {% endif %}
+                    </li>
+                    <li class="mb-3">
+                        <strong>Avg. Completion:</strong> 
+                        {{ "%.2f"|format(data["per_run"]["completion_rate"].mean()) if hasattr(data["per_run"], 'columns') else 'N/A' }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
