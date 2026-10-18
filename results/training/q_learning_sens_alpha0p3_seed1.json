@@ -1,0 +1,13 @@
+{
+  "best_episode": 299,
+  "best_greedy_val_reward": 14.8935,
+  "final_greedy_val_reward": 12.348,
+  "selection_metric": "greedy rollout reward on 4 TRAINING students",
+  "val_students": [
+    "S001",
+    "S002",
+    "S003",
+    "S004"
+  ],
+  "training_time_sec": 7.13
+}
